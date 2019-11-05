@@ -126,7 +126,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="E:/CP_Stuffs/CP-Algorithms/cmake-build-debug/DFS.cpp">
+		<Unit filename="E:/CP_Stuffs/CP-Algorithms/DFS.cpp">
 			<Option target="DFS"/>
 		</Unit>
 		<Unit filename="E:/CP_Stuffs/CP-Algorithms/sieve.cpp">

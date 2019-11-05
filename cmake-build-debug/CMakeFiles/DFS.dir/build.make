@@ -57,17 +57,17 @@ include CMakeFiles/DFS.dir/progress.make
 include CMakeFiles/DFS.dir/flags.make
 
 CMakeFiles/DFS.dir/DFS.cpp.obj: CMakeFiles/DFS.dir/flags.make
-CMakeFiles/DFS.dir/DFS.cpp.obj: DFS.cpp
+CMakeFiles/DFS.dir/DFS.cpp.obj: ../DFS.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\CP_Stuffs\CP-Algorithms\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DFS.dir/DFS.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\DFS.dir\DFS.cpp.obj -c E:\CP_Stuffs\CP-Algorithms\cmake-build-debug\DFS.cpp
+	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\DFS.dir\DFS.cpp.obj -c E:\CP_Stuffs\CP-Algorithms\DFS.cpp
 
 CMakeFiles/DFS.dir/DFS.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DFS.dir/DFS.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\CP_Stuffs\CP-Algorithms\cmake-build-debug\DFS.cpp > CMakeFiles\DFS.dir\DFS.cpp.i
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\CP_Stuffs\CP-Algorithms\DFS.cpp > CMakeFiles\DFS.dir\DFS.cpp.i
 
 CMakeFiles/DFS.dir/DFS.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DFS.dir/DFS.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\CP_Stuffs\CP-Algorithms\cmake-build-debug\DFS.cpp -o CMakeFiles\DFS.dir\DFS.cpp.s
+	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\CP_Stuffs\CP-Algorithms\DFS.cpp -o CMakeFiles\DFS.dir\DFS.cpp.s
 
 # Object files for target DFS
 DFS_OBJECTS = \

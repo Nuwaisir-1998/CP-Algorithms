@@ -4,6 +4,8 @@
 
 /*
  *
+ * Algorithm : Sieve of Eratosthenes
+ * Description : The algorithm can generate prime numbers upto some number in lesser amount of time than naive approach
  * Runtime : O(n log log n) ; [ Roughly ]
  *
  */

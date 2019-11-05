@@ -27,7 +27,7 @@ void sieve(ll n) {                           // Generate primes upto n
         if (!isNotPrime[i]) {
             primes.push_back(i);
             if (i * i <= n) {
-                for (j = i * i; j <= n; j += i + i) {         // From j = i * i. Because i * 2, i * 3 are already
+                for (j = i * i; j <= n; j += i + i) {         // From j = i * i. Because i * 2, i * 3, ... are already
                                                               // crossed out by 2, 3 respectively
                     isNotPrime[j] = true;
                 }

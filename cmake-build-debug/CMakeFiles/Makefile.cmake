@@ -54,5 +54,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/sieve.dir/DependInfo.cmake"
-  "CMakeFiles/CP_Algorithms.dir/DependInfo.cmake"
+  "CMakeFiles/DFS.dir/DependInfo.cmake"
   )

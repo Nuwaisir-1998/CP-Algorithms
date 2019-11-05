@@ -123,44 +123,44 @@ sieve/fast:
 .PHONY : sieve/fast
 
 #=============================================================================
-# Target rules for targets named CP_Algorithms
+# Target rules for targets named DFS
 
 # Build rule for target.
-CP_Algorithms: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 CP_Algorithms
-.PHONY : CP_Algorithms
+DFS: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 DFS
+.PHONY : DFS
 
 # fast build rule for target.
-CP_Algorithms/fast:
-	$(MAKE) -f CMakeFiles\CP_Algorithms.dir\build.make CMakeFiles/CP_Algorithms.dir/build
-.PHONY : CP_Algorithms/fast
+DFS/fast:
+	$(MAKE) -f CMakeFiles\DFS.dir\build.make CMakeFiles/DFS.dir/build
+.PHONY : DFS/fast
 
-main.obj: main.cpp.obj
+DFS.obj: DFS.cpp.obj
 
-.PHONY : main.obj
+.PHONY : DFS.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) -f CMakeFiles\CP_Algorithms.dir\build.make CMakeFiles/CP_Algorithms.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+DFS.cpp.obj:
+	$(MAKE) -f CMakeFiles\DFS.dir\build.make CMakeFiles/DFS.dir/DFS.cpp.obj
+.PHONY : DFS.cpp.obj
 
-main.i: main.cpp.i
+DFS.i: DFS.cpp.i
 
-.PHONY : main.i
+.PHONY : DFS.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles\CP_Algorithms.dir\build.make CMakeFiles/CP_Algorithms.dir/main.cpp.i
-.PHONY : main.cpp.i
+DFS.cpp.i:
+	$(MAKE) -f CMakeFiles\DFS.dir\build.make CMakeFiles/DFS.dir/DFS.cpp.i
+.PHONY : DFS.cpp.i
 
-main.s: main.cpp.s
+DFS.s: DFS.cpp.s
 
-.PHONY : main.s
+.PHONY : DFS.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles\CP_Algorithms.dir\build.make CMakeFiles/CP_Algorithms.dir/main.cpp.s
-.PHONY : main.cpp.s
+DFS.cpp.s:
+	$(MAKE) -f CMakeFiles\DFS.dir\build.make CMakeFiles/DFS.dir/DFS.cpp.s
+.PHONY : DFS.cpp.s
 
 sieve.obj: sieve.cpp.obj
 
@@ -196,12 +196,12 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... sieve
-	@echo ... CP_Algorithms
+	@echo ... DFS
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... DFS.obj
+	@echo ... DFS.i
+	@echo ... DFS.s
 	@echo ... sieve.obj
 	@echo ... sieve.i
 	@echo ... sieve.s

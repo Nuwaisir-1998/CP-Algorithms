@@ -53,13 +53,13 @@ CMAKE_BINARY_DIR = E:\CP_Stuffs\CP-Algorithms\cmake-build-debug
 
 # The main recursive "all" target.
 all: CMakeFiles/sieve.dir/all
-all: CMakeFiles/CP_Algorithms.dir/all
+all: CMakeFiles/DFS.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
 clean: CMakeFiles/sieve.dir/clean
-clean: CMakeFiles/CP_Algorithms.dir/clean
+clean: CMakeFiles/DFS.dir/clean
 
 .PHONY : clean
 
@@ -96,31 +96,31 @@ CMakeFiles/sieve.dir/clean:
 .PHONY : CMakeFiles/sieve.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/CP_Algorithms.dir
+# Target rules for target CMakeFiles/DFS.dir
 
 # All Build rule for target.
-CMakeFiles/CP_Algorithms.dir/all:
-	$(MAKE) -f CMakeFiles\CP_Algorithms.dir\build.make CMakeFiles/CP_Algorithms.dir/depend
-	$(MAKE) -f CMakeFiles\CP_Algorithms.dir\build.make CMakeFiles/CP_Algorithms.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\CP_Stuffs\CP-Algorithms\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target CP_Algorithms"
-.PHONY : CMakeFiles/CP_Algorithms.dir/all
+CMakeFiles/DFS.dir/all:
+	$(MAKE) -f CMakeFiles\DFS.dir\build.make CMakeFiles/DFS.dir/depend
+	$(MAKE) -f CMakeFiles\DFS.dir\build.make CMakeFiles/DFS.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=E:\CP_Stuffs\CP-Algorithms\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target DFS"
+.PHONY : CMakeFiles/DFS.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/CP_Algorithms.dir/rule: cmake_check_build_system
+CMakeFiles/DFS.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start E:\CP_Stuffs\CP-Algorithms\cmake-build-debug\CMakeFiles 2
-	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/CP_Algorithms.dir/all
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/DFS.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start E:\CP_Stuffs\CP-Algorithms\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/CP_Algorithms.dir/rule
+.PHONY : CMakeFiles/DFS.dir/rule
 
 # Convenience name for target.
-CP_Algorithms: CMakeFiles/CP_Algorithms.dir/rule
+DFS: CMakeFiles/DFS.dir/rule
 
-.PHONY : CP_Algorithms
+.PHONY : DFS
 
 # clean rule for target.
-CMakeFiles/CP_Algorithms.dir/clean:
-	$(MAKE) -f CMakeFiles\CP_Algorithms.dir\build.make CMakeFiles/CP_Algorithms.dir/clean
-.PHONY : CMakeFiles/CP_Algorithms.dir/clean
+CMakeFiles/DFS.dir/clean:
+	$(MAKE) -f CMakeFiles\DFS.dir\build.make CMakeFiles/DFS.dir/clean
+.PHONY : CMakeFiles/DFS.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

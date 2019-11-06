@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "E:/CP_Stuffs/CP-Algorithms/DFS.cpp" "E:/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles/DFS.dir/DFS.cpp.obj"
+  "/home/nuwaisir/CP_Stuffs/CP-Algorithms/DFS.cpp" "/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles/DFS.dir/DFS.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

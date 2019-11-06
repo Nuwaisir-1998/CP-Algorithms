@@ -1,3 +1,1 @@
-"C:\Program Files\JetBrains\CLion 2019.2.5\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\sieve.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\sieve.dir/objects.a @CMakeFiles\sieve.dir\objects1.rsp
-C:\MinGW\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\sieve.dir/objects.a -Wl,--no-whole-archive  -o sieve.exe -Wl,--out-implib,libsieve.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\sieve.dir\linklibs.rsp
+/usr/bin/c++  -g   CMakeFiles/sieve.dir/sieve.cpp.o  -o sieve 

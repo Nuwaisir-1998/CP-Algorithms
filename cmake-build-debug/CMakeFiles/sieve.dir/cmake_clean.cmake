@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/sieve.dir/sieve.cpp.obj"
-  "libsieve.dll.a"
-  "sieve.exe"
-  "sieve.exe.manifest"
+  "CMakeFiles/sieve.dir/sieve.cpp.o"
+  "sieve"
   "sieve.pdb"
 )
 

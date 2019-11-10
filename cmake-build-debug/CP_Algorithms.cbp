@@ -17,113 +17,11 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="rebuild_cache">
 				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="BFS">
-				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/BFS" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/8"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
-					<Add directory="/usr/include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 BFS"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="BFS/fast">
-				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/BFS" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/8"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
-					<Add directory="/usr/include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 BFS/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="sieve">
-				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/sieve" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/8"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
-					<Add directory="/usr/include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 sieve"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="sieve/fast">
-				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/sieve" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/8"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
-					<Add directory="/usr/include/c++/8/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 sieve/fast"/>
 					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -175,12 +73,212 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="sieve">
+				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/sieve" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 sieve"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sieve/fast">
+				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/sieve" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 sieve/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="random_workspace">
+				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/random_workspace" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 random_workspace"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="random_workspace/fast">
+				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/random_workspace" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 random_workspace/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="BFS">
+				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/BFS" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 BFS"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="BFS/fast">
+				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/BFS" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 BFS/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="BigInteger">
+				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/BigInteger" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 BigInteger"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="BigInteger/fast">
+				<Option output="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/BigInteger" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 BigInteger/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 		</Build>
 		<Unit filename="/home/nuwaisir/CP_Stuffs/CP-Algorithms/BFS.cpp">
 			<Option target="BFS"/>
 		</Unit>
+		<Unit filename="/home/nuwaisir/CP_Stuffs/CP-Algorithms/BigInteger.cpp">
+			<Option target="BigInteger"/>
+		</Unit>
 		<Unit filename="/home/nuwaisir/CP_Stuffs/CP-Algorithms/DFS.cpp">
 			<Option target="DFS"/>
+		</Unit>
+		<Unit filename="/home/nuwaisir/CP_Stuffs/CP-Algorithms/random_workspace.cpp">
+			<Option target="random_workspace"/>
 		</Unit>
 		<Unit filename="/home/nuwaisir/CP_Stuffs/CP-Algorithms/sieve.cpp">
 			<Option target="sieve"/>

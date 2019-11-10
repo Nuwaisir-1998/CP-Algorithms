@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/nuwaisir/Downloads/clion-2019.1.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/home/nuwaisir/Downloads/clion-2019.1.2/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named BFS
+# Target rules for targets named DFS
 
 # Build rule for target.
-BFS: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 BFS
-.PHONY : BFS
+DFS: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DFS
+.PHONY : DFS
 
 # fast build rule for target.
-BFS/fast:
-	$(MAKE) -f CMakeFiles/BFS.dir/build.make CMakeFiles/BFS.dir/build
-.PHONY : BFS/fast
+DFS/fast:
+	$(MAKE) -f CMakeFiles/DFS.dir/build.make CMakeFiles/DFS.dir/build
+.PHONY : DFS/fast
 
 #=============================================================================
 # Target rules for targets named sieve
@@ -137,17 +137,43 @@ sieve/fast:
 .PHONY : sieve/fast
 
 #=============================================================================
-# Target rules for targets named DFS
+# Target rules for targets named random_workspace
 
 # Build rule for target.
-DFS: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 DFS
-.PHONY : DFS
+random_workspace: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 random_workspace
+.PHONY : random_workspace
 
 # fast build rule for target.
-DFS/fast:
-	$(MAKE) -f CMakeFiles/DFS.dir/build.make CMakeFiles/DFS.dir/build
-.PHONY : DFS/fast
+random_workspace/fast:
+	$(MAKE) -f CMakeFiles/random_workspace.dir/build.make CMakeFiles/random_workspace.dir/build
+.PHONY : random_workspace/fast
+
+#=============================================================================
+# Target rules for targets named BFS
+
+# Build rule for target.
+BFS: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 BFS
+.PHONY : BFS
+
+# fast build rule for target.
+BFS/fast:
+	$(MAKE) -f CMakeFiles/BFS.dir/build.make CMakeFiles/BFS.dir/build
+.PHONY : BFS/fast
+
+#=============================================================================
+# Target rules for targets named BigInteger
+
+# Build rule for target.
+BigInteger: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 BigInteger
+.PHONY : BigInteger
+
+# fast build rule for target.
+BigInteger/fast:
+	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/build
+.PHONY : BigInteger/fast
 
 BFS.o: BFS.cpp.o
 
@@ -176,6 +202,33 @@ BFS.cpp.s:
 	$(MAKE) -f CMakeFiles/BFS.dir/build.make CMakeFiles/BFS.dir/BFS.cpp.s
 .PHONY : BFS.cpp.s
 
+BigInteger.o: BigInteger.cpp.o
+
+.PHONY : BigInteger.o
+
+# target to build an object file
+BigInteger.cpp.o:
+	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/BigInteger.cpp.o
+.PHONY : BigInteger.cpp.o
+
+BigInteger.i: BigInteger.cpp.i
+
+.PHONY : BigInteger.i
+
+# target to preprocess a source file
+BigInteger.cpp.i:
+	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/BigInteger.cpp.i
+.PHONY : BigInteger.cpp.i
+
+BigInteger.s: BigInteger.cpp.s
+
+.PHONY : BigInteger.s
+
+# target to generate assembly for a file
+BigInteger.cpp.s:
+	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/BigInteger.cpp.s
+.PHONY : BigInteger.cpp.s
+
 DFS.o: DFS.cpp.o
 
 .PHONY : DFS.o
@@ -202,6 +255,33 @@ DFS.s: DFS.cpp.s
 DFS.cpp.s:
 	$(MAKE) -f CMakeFiles/DFS.dir/build.make CMakeFiles/DFS.dir/DFS.cpp.s
 .PHONY : DFS.cpp.s
+
+random_workspace.o: random_workspace.cpp.o
+
+.PHONY : random_workspace.o
+
+# target to build an object file
+random_workspace.cpp.o:
+	$(MAKE) -f CMakeFiles/random_workspace.dir/build.make CMakeFiles/random_workspace.dir/random_workspace.cpp.o
+.PHONY : random_workspace.cpp.o
+
+random_workspace.i: random_workspace.cpp.i
+
+.PHONY : random_workspace.i
+
+# target to preprocess a source file
+random_workspace.cpp.i:
+	$(MAKE) -f CMakeFiles/random_workspace.dir/build.make CMakeFiles/random_workspace.dir/random_workspace.cpp.i
+.PHONY : random_workspace.cpp.i
+
+random_workspace.s: random_workspace.cpp.s
+
+.PHONY : random_workspace.s
+
+# target to generate assembly for a file
+random_workspace.cpp.s:
+	$(MAKE) -f CMakeFiles/random_workspace.dir/build.make CMakeFiles/random_workspace.dir/random_workspace.cpp.s
+.PHONY : random_workspace.cpp.s
 
 sieve.o: sieve.cpp.o
 
@@ -236,17 +316,25 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... BFS"
-	@echo "... sieve"
 	@echo "... DFS"
+	@echo "... sieve"
+	@echo "... random_workspace"
+	@echo "... BFS"
+	@echo "... BigInteger"
+	@echo "... edit_cache"
 	@echo "... BFS.o"
 	@echo "... BFS.i"
 	@echo "... BFS.s"
+	@echo "... BigInteger.o"
+	@echo "... BigInteger.i"
+	@echo "... BigInteger.s"
 	@echo "... DFS.o"
 	@echo "... DFS.i"
 	@echo "... DFS.s"
+	@echo "... random_workspace.o"
+	@echo "... random_workspace.i"
+	@echo "... random_workspace.s"
 	@echo "... sieve.o"
 	@echo "... sieve.i"
 	@echo "... sieve.s"

@@ -15,9 +15,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ef21f67-23a9-4ff2-aeb3-11a30a09ce3c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3ef21f67-23a9-4ff2-aeb3-11a30a09ce3c" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +101,7 @@
       <workItem from="1573345077053" duration="3235000" />
       <workItem from="1573446606480" duration="909000" />
       <workItem from="1573791665235" duration="962000" />
-      <workItem from="1573877294197" duration="860000" />
+      <workItem from="1573877294197" duration="1195000" />
     </task>
     <task id="LOCAL-00001" summary="DFS.cpp added">
       <created>1572979833892</created>

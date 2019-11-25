@@ -137,6 +137,19 @@ sieve/fast:
 .PHONY : sieve/fast
 
 #=============================================================================
+# Target rules for targets named BigInteger
+
+# Build rule for target.
+BigInteger: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 BigInteger
+.PHONY : BigInteger
+
+# fast build rule for target.
+BigInteger/fast:
+	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/build
+.PHONY : BigInteger/fast
+
+#=============================================================================
 # Target rules for targets named random_workspace
 
 # Build rule for target.
@@ -163,17 +176,17 @@ BFS/fast:
 .PHONY : BFS/fast
 
 #=============================================================================
-# Target rules for targets named BigInteger
+# Target rules for targets named BigMod
 
 # Build rule for target.
-BigInteger: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 BigInteger
-.PHONY : BigInteger
+BigMod: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 BigMod
+.PHONY : BigMod
 
 # fast build rule for target.
-BigInteger/fast:
-	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/build
-.PHONY : BigInteger/fast
+BigMod/fast:
+	$(MAKE) -f CMakeFiles/BigMod.dir/build.make CMakeFiles/BigMod.dir/build
+.PHONY : BigMod/fast
 
 BFS.o: BFS.cpp.o
 
@@ -228,6 +241,33 @@ BigInteger.s: BigInteger.cpp.s
 BigInteger.cpp.s:
 	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/BigInteger.cpp.s
 .PHONY : BigInteger.cpp.s
+
+BigMod.o: BigMod.cpp.o
+
+.PHONY : BigMod.o
+
+# target to build an object file
+BigMod.cpp.o:
+	$(MAKE) -f CMakeFiles/BigMod.dir/build.make CMakeFiles/BigMod.dir/BigMod.cpp.o
+.PHONY : BigMod.cpp.o
+
+BigMod.i: BigMod.cpp.i
+
+.PHONY : BigMod.i
+
+# target to preprocess a source file
+BigMod.cpp.i:
+	$(MAKE) -f CMakeFiles/BigMod.dir/build.make CMakeFiles/BigMod.dir/BigMod.cpp.i
+.PHONY : BigMod.cpp.i
+
+BigMod.s: BigMod.cpp.s
+
+.PHONY : BigMod.s
+
+# target to generate assembly for a file
+BigMod.cpp.s:
+	$(MAKE) -f CMakeFiles/BigMod.dir/build.make CMakeFiles/BigMod.dir/BigMod.cpp.s
+.PHONY : BigMod.cpp.s
 
 DFS.o: DFS.cpp.o
 
@@ -319,16 +359,20 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... DFS"
 	@echo "... sieve"
+	@echo "... edit_cache"
+	@echo "... BigInteger"
 	@echo "... random_workspace"
 	@echo "... BFS"
-	@echo "... BigInteger"
-	@echo "... edit_cache"
+	@echo "... BigMod"
 	@echo "... BFS.o"
 	@echo "... BFS.i"
 	@echo "... BFS.s"
 	@echo "... BigInteger.o"
 	@echo "... BigInteger.i"
 	@echo "... BigInteger.s"
+	@echo "... BigMod.o"
+	@echo "... BigMod.i"
+	@echo "... BigMod.s"
 	@echo "... DFS.o"
 	@echo "... DFS.i"
 	@echo "... DFS.s"

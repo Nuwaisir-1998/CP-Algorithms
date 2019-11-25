@@ -2,11 +2,12 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
+      <config projectName="CP_Algorithms" targetName="DFS" />
       <config projectName="CP_Algorithms" targetName="BFS" />
       <config projectName="CP_Algorithms" targetName="sieve" />
-      <config projectName="CP_Algorithms" targetName="random_workspace" />
       <config projectName="CP_Algorithms" targetName="BigInteger" />
-      <config projectName="CP_Algorithms" targetName="DFS" />
+      <config projectName="CP_Algorithms" targetName="BigMod" />
+      <config projectName="CP_Algorithms" targetName="random_workspace" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -15,7 +16,23 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ef21f67-23a9-4ff2-aeb3-11a30a09ce3c" name="Default Changelist" comment="" />
+    <list default="true" id="3ef21f67-23a9-4ff2-aeb3-11a30a09ce3c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DFS.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DFS.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/random_workspace.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/random_workspace.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/sieve.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/sieve.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CP_Algorithms.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CP_Algorithms.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/random_workspace" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/random_workspace" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/random_workspace.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/random_workspace.cpp" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +47,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1TCvkxT2R6DgNvmI1CnSI9n1ZJS" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -48,13 +67,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="CMake Application.random_workspace">
+  <component name="RunManager" selected="CMake Application.BigMod">
     <configuration name="BFS" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CP_Algorithms" TARGET_NAME="BFS" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CP_Algorithms" RUN_TARGET_NAME="BFS">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="BigInteger" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CP_Algorithms" TARGET_NAME="BigInteger" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CP_Algorithms" RUN_TARGET_NAME="BigInteger">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BigMod" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CP_Algorithms" TARGET_NAME="BigMod" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CP_Algorithms" RUN_TARGET_NAME="BigMod">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -77,6 +101,7 @@
     <list>
       <item itemvalue="CMake Application.BFS" />
       <item itemvalue="CMake Application.BigInteger" />
+      <item itemvalue="CMake Application.BigMod" />
       <item itemvalue="CMake Application.DFS" />
       <item itemvalue="CMake Application.random_workspace" />
       <item itemvalue="CMake Application.sieve" />
@@ -101,7 +126,13 @@
       <workItem from="1573345077053" duration="3235000" />
       <workItem from="1573446606480" duration="909000" />
       <workItem from="1573791665235" duration="962000" />
-      <workItem from="1573877294197" duration="1195000" />
+      <workItem from="1573877294197" duration="2429000" />
+      <workItem from="1573949457415" duration="1210000" />
+      <workItem from="1573971451690" duration="398000" />
+      <workItem from="1574468613488" duration="12885000" />
+      <workItem from="1574555155166" duration="23190000" />
+      <workItem from="1574657137634" duration="702000" />
+      <workItem from="1574686305413" duration="1479000" />
     </task>
     <task id="LOCAL-00001" summary="DFS.cpp added">
       <created>1572979833892</created>
@@ -153,19 +184,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/random_workspace.cpp</url>
-          <line>395</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/random_workspace.cpp</url>
-          <line>543</line>
-          <option name="timeStamp" value="12" />
+          <line>49</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
-        <watch expression="n" />
+        <watch expression="left" />
+        <watch expression="mid" />
+        <watch expression="right" />
       </configuration>
     </watches-manager>
   </component>

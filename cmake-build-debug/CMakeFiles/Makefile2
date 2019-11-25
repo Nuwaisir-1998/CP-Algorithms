@@ -55,18 +55,20 @@ CMAKE_BINARY_DIR = /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug
 # The main recursive "all" target.
 all: CMakeFiles/DFS.dir/all
 all: CMakeFiles/sieve.dir/all
+all: CMakeFiles/BigInteger.dir/all
 all: CMakeFiles/random_workspace.dir/all
 all: CMakeFiles/BFS.dir/all
-all: CMakeFiles/BigInteger.dir/all
+all: CMakeFiles/BigMod.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
 clean: CMakeFiles/DFS.dir/clean
 clean: CMakeFiles/sieve.dir/clean
+clean: CMakeFiles/BigInteger.dir/clean
 clean: CMakeFiles/random_workspace.dir/clean
 clean: CMakeFiles/BFS.dir/clean
-clean: CMakeFiles/BigInteger.dir/clean
+clean: CMakeFiles/BigMod.dir/clean
 
 .PHONY : clean
 
@@ -82,7 +84,7 @@ preinstall:
 CMakeFiles/DFS.dir/all:
 	$(MAKE) -f CMakeFiles/DFS.dir/build.make CMakeFiles/DFS.dir/depend
 	$(MAKE) -f CMakeFiles/DFS.dir/build.make CMakeFiles/DFS.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target DFS"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=7,8 "Built target DFS"
 .PHONY : CMakeFiles/DFS.dir/all
 
 # Build rule for subdir invocation for target.
@@ -109,7 +111,7 @@ CMakeFiles/DFS.dir/clean:
 CMakeFiles/sieve.dir/all:
 	$(MAKE) -f CMakeFiles/sieve.dir/build.make CMakeFiles/sieve.dir/depend
 	$(MAKE) -f CMakeFiles/sieve.dir/build.make CMakeFiles/sieve.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=9,10 "Built target sieve"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=11,12 "Built target sieve"
 .PHONY : CMakeFiles/sieve.dir/all
 
 # Build rule for subdir invocation for target.
@@ -130,13 +132,40 @@ CMakeFiles/sieve.dir/clean:
 .PHONY : CMakeFiles/sieve.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/BigInteger.dir
+
+# All Build rule for target.
+CMakeFiles/BigInteger.dir/all:
+	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/depend
+	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target BigInteger"
+.PHONY : CMakeFiles/BigInteger.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/BigInteger.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/BigInteger.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/BigInteger.dir/rule
+
+# Convenience name for target.
+BigInteger: CMakeFiles/BigInteger.dir/rule
+
+.PHONY : BigInteger
+
+# clean rule for target.
+CMakeFiles/BigInteger.dir/clean:
+	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/clean
+.PHONY : CMakeFiles/BigInteger.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/random_workspace.dir
 
 # All Build rule for target.
 CMakeFiles/random_workspace.dir/all:
 	$(MAKE) -f CMakeFiles/random_workspace.dir/build.make CMakeFiles/random_workspace.dir/depend
 	$(MAKE) -f CMakeFiles/random_workspace.dir/build.make CMakeFiles/random_workspace.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=7,8 "Built target random_workspace"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=9,10 "Built target random_workspace"
 .PHONY : CMakeFiles/random_workspace.dir/all
 
 # Build rule for subdir invocation for target.
@@ -184,31 +213,31 @@ CMakeFiles/BFS.dir/clean:
 .PHONY : CMakeFiles/BFS.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/BigInteger.dir
+# Target rules for target CMakeFiles/BigMod.dir
 
 # All Build rule for target.
-CMakeFiles/BigInteger.dir/all:
-	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/depend
-	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target BigInteger"
-.PHONY : CMakeFiles/BigInteger.dir/all
+CMakeFiles/BigMod.dir/all:
+	$(MAKE) -f CMakeFiles/BigMod.dir/build.make CMakeFiles/BigMod.dir/depend
+	$(MAKE) -f CMakeFiles/BigMod.dir/build.make CMakeFiles/BigMod.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target BigMod"
+.PHONY : CMakeFiles/BigMod.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/BigInteger.dir/rule: cmake_check_build_system
+CMakeFiles/BigMod.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/BigInteger.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/BigMod.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/BigInteger.dir/rule
+.PHONY : CMakeFiles/BigMod.dir/rule
 
 # Convenience name for target.
-BigInteger: CMakeFiles/BigInteger.dir/rule
+BigMod: CMakeFiles/BigMod.dir/rule
 
-.PHONY : BigInteger
+.PHONY : BigMod
 
 # clean rule for target.
-CMakeFiles/BigInteger.dir/clean:
-	$(MAKE) -f CMakeFiles/BigInteger.dir/build.make CMakeFiles/BigInteger.dir/clean
-.PHONY : CMakeFiles/BigInteger.dir/clean
+CMakeFiles/BigMod.dir/clean:
+	$(MAKE) -f CMakeFiles/BigMod.dir/build.make CMakeFiles/BigMod.dir/clean
+.PHONY : CMakeFiles/BigMod.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

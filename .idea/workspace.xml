@@ -6,6 +6,7 @@
       <config projectName="CP_Algorithms" targetName="BFS" />
       <config projectName="CP_Algorithms" targetName="sieve" />
       <config projectName="CP_Algorithms" targetName="BigInteger" />
+      <config projectName="CP_Algorithms" targetName="DSU" />
       <config projectName="CP_Algorithms" targetName="BigMod" />
       <config projectName="CP_Algorithms" targetName="random_workspace" />
     </generated>
@@ -19,18 +20,14 @@
     <list default="true" id="3ef21f67-23a9-4ff2-aeb3-11a30a09ce3c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DFS.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DFS.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/random_workspace.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/random_workspace.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/sieve.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/sieve.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CP_Algorithms.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CP_Algorithms.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/random_workspace" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/random_workspace" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/random_workspace.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/random_workspace.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,6 +85,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DSU" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CP_Algorithms" TARGET_NAME="DSU" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CP_Algorithms" RUN_TARGET_NAME="DSU">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="random_workspace" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CP_Algorithms" TARGET_NAME="random_workspace" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CP_Algorithms" RUN_TARGET_NAME="random_workspace">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -103,6 +105,7 @@
       <item itemvalue="CMake Application.BigInteger" />
       <item itemvalue="CMake Application.BigMod" />
       <item itemvalue="CMake Application.DFS" />
+      <item itemvalue="CMake Application.DSU" />
       <item itemvalue="CMake Application.random_workspace" />
       <item itemvalue="CMake Application.sieve" />
     </list>
@@ -132,7 +135,8 @@
       <workItem from="1574468613488" duration="12885000" />
       <workItem from="1574555155166" duration="23190000" />
       <workItem from="1574657137634" duration="702000" />
-      <workItem from="1574686305413" duration="1479000" />
+      <workItem from="1574686305413" duration="2364000" />
+      <workItem from="1574727126530" duration="4029000" />
     </task>
     <task id="LOCAL-00001" summary="DFS.cpp added">
       <created>1572979833892</created>
@@ -184,7 +188,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/random_workspace.cpp</url>
-          <line>49</line>
+          <line>32</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>

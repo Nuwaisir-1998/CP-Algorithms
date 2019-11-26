@@ -53,6 +53,7 @@ CMAKE_BINARY_DIR = /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/DSU.dir/all
 all: CMakeFiles/DFS.dir/all
 all: CMakeFiles/sieve.dir/all
 all: CMakeFiles/BigInteger.dir/all
@@ -63,6 +64,7 @@ all: CMakeFiles/BigMod.dir/all
 .PHONY : all
 
 # The main recursive "clean" target.
+clean: CMakeFiles/DSU.dir/clean
 clean: CMakeFiles/DFS.dir/clean
 clean: CMakeFiles/sieve.dir/clean
 clean: CMakeFiles/BigInteger.dir/clean
@@ -76,6 +78,33 @@ clean: CMakeFiles/BigMod.dir/clean
 preinstall:
 
 .PHONY : preinstall
+
+#=============================================================================
+# Target rules for target CMakeFiles/DSU.dir
+
+# All Build rule for target.
+CMakeFiles/DSU.dir/all:
+	$(MAKE) -f CMakeFiles/DSU.dir/build.make CMakeFiles/DSU.dir/depend
+	$(MAKE) -f CMakeFiles/DSU.dir/build.make CMakeFiles/DSU.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=9,10 "Built target DSU"
+.PHONY : CMakeFiles/DSU.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/DSU.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/DSU.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/DSU.dir/rule
+
+# Convenience name for target.
+DSU: CMakeFiles/DSU.dir/rule
+
+.PHONY : DSU
+
+# clean rule for target.
+CMakeFiles/DSU.dir/clean:
+	$(MAKE) -f CMakeFiles/DSU.dir/build.make CMakeFiles/DSU.dir/clean
+.PHONY : CMakeFiles/DSU.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/DFS.dir
@@ -111,7 +140,7 @@ CMakeFiles/DFS.dir/clean:
 CMakeFiles/sieve.dir/all:
 	$(MAKE) -f CMakeFiles/sieve.dir/build.make CMakeFiles/sieve.dir/depend
 	$(MAKE) -f CMakeFiles/sieve.dir/build.make CMakeFiles/sieve.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=11,12 "Built target sieve"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=13,14 "Built target sieve"
 .PHONY : CMakeFiles/sieve.dir/all
 
 # Build rule for subdir invocation for target.
@@ -165,7 +194,7 @@ CMakeFiles/BigInteger.dir/clean:
 CMakeFiles/random_workspace.dir/all:
 	$(MAKE) -f CMakeFiles/random_workspace.dir/build.make CMakeFiles/random_workspace.dir/depend
 	$(MAKE) -f CMakeFiles/random_workspace.dir/build.make CMakeFiles/random_workspace.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=9,10 "Built target random_workspace"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=11,12 "Built target random_workspace"
 .PHONY : CMakeFiles/random_workspace.dir/all
 
 # Build rule for subdir invocation for target.

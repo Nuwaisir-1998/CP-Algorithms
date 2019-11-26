@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named DSU
+
+# Build rule for target.
+DSU: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DSU
+.PHONY : DSU
+
+# fast build rule for target.
+DSU/fast:
+	$(MAKE) -f CMakeFiles/DSU.dir/build.make CMakeFiles/DSU.dir/build
+.PHONY : DSU/fast
+
+#=============================================================================
 # Target rules for targets named DFS
 
 # Build rule for target.
@@ -296,6 +309,33 @@ DFS.cpp.s:
 	$(MAKE) -f CMakeFiles/DFS.dir/build.make CMakeFiles/DFS.dir/DFS.cpp.s
 .PHONY : DFS.cpp.s
 
+DSU.o: DSU.cpp.o
+
+.PHONY : DSU.o
+
+# target to build an object file
+DSU.cpp.o:
+	$(MAKE) -f CMakeFiles/DSU.dir/build.make CMakeFiles/DSU.dir/DSU.cpp.o
+.PHONY : DSU.cpp.o
+
+DSU.i: DSU.cpp.i
+
+.PHONY : DSU.i
+
+# target to preprocess a source file
+DSU.cpp.i:
+	$(MAKE) -f CMakeFiles/DSU.dir/build.make CMakeFiles/DSU.dir/DSU.cpp.i
+.PHONY : DSU.cpp.i
+
+DSU.s: DSU.cpp.s
+
+.PHONY : DSU.s
+
+# target to generate assembly for a file
+DSU.cpp.s:
+	$(MAKE) -f CMakeFiles/DSU.dir/build.make CMakeFiles/DSU.dir/DSU.cpp.s
+.PHONY : DSU.cpp.s
+
 random_workspace.o: random_workspace.cpp.o
 
 .PHONY : random_workspace.o
@@ -357,6 +397,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... DSU"
 	@echo "... DFS"
 	@echo "... sieve"
 	@echo "... edit_cache"
@@ -376,6 +417,9 @@ help:
 	@echo "... DFS.o"
 	@echo "... DFS.i"
 	@echo "... DFS.s"
+	@echo "... DSU.o"
+	@echo "... DSU.i"
+	@echo "... DSU.s"
 	@echo "... random_workspace.o"
 	@echo "... random_workspace.i"
 	@echo "... random_workspace.s"

@@ -39,6 +39,7 @@ public:
 
 int main() {
     ios::sync_with_stdio(false);
-
+    DSU dsu(10);
+    cout << dsu.findSet(3) << "\n";
     return 0;
 }

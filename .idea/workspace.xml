@@ -64,7 +64,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="CMake Application.BigMod">
+  <component name="RunManager" selected="CMake Application.DSU">
     <configuration name="BFS" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CP_Algorithms" TARGET_NAME="BFS" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CP_Algorithms" RUN_TARGET_NAME="BFS">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />

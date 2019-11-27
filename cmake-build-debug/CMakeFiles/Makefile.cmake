@@ -48,6 +48,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/SegmentTree.dir/DependInfo.cmake"
   "CMakeFiles/DSU.dir/DependInfo.cmake"
   "CMakeFiles/DFS.dir/DependInfo.cmake"
   "CMakeFiles/sieve.dir/DependInfo.cmake"

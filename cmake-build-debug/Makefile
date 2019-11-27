@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named SegmentTree
+
+# Build rule for target.
+SegmentTree: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 SegmentTree
+.PHONY : SegmentTree
+
+# fast build rule for target.
+SegmentTree/fast:
+	$(MAKE) -f CMakeFiles/SegmentTree.dir/build.make CMakeFiles/SegmentTree.dir/build
+.PHONY : SegmentTree/fast
+
+#=============================================================================
 # Target rules for targets named DSU
 
 # Build rule for target.
@@ -336,6 +349,33 @@ DSU.cpp.s:
 	$(MAKE) -f CMakeFiles/DSU.dir/build.make CMakeFiles/DSU.dir/DSU.cpp.s
 .PHONY : DSU.cpp.s
 
+SegmentTree.o: SegmentTree.cpp.o
+
+.PHONY : SegmentTree.o
+
+# target to build an object file
+SegmentTree.cpp.o:
+	$(MAKE) -f CMakeFiles/SegmentTree.dir/build.make CMakeFiles/SegmentTree.dir/SegmentTree.cpp.o
+.PHONY : SegmentTree.cpp.o
+
+SegmentTree.i: SegmentTree.cpp.i
+
+.PHONY : SegmentTree.i
+
+# target to preprocess a source file
+SegmentTree.cpp.i:
+	$(MAKE) -f CMakeFiles/SegmentTree.dir/build.make CMakeFiles/SegmentTree.dir/SegmentTree.cpp.i
+.PHONY : SegmentTree.cpp.i
+
+SegmentTree.s: SegmentTree.cpp.s
+
+.PHONY : SegmentTree.s
+
+# target to generate assembly for a file
+SegmentTree.cpp.s:
+	$(MAKE) -f CMakeFiles/SegmentTree.dir/build.make CMakeFiles/SegmentTree.dir/SegmentTree.cpp.s
+.PHONY : SegmentTree.cpp.s
+
 random_workspace.o: random_workspace.cpp.o
 
 .PHONY : random_workspace.o
@@ -397,6 +437,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... SegmentTree"
 	@echo "... DSU"
 	@echo "... DFS"
 	@echo "... sieve"
@@ -420,6 +461,9 @@ help:
 	@echo "... DSU.o"
 	@echo "... DSU.i"
 	@echo "... DSU.s"
+	@echo "... SegmentTree.o"
+	@echo "... SegmentTree.i"
+	@echo "... SegmentTree.s"
 	@echo "... random_workspace.o"
 	@echo "... random_workspace.i"
 	@echo "... random_workspace.s"

@@ -53,6 +53,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/DFS.dir/DependInfo.cmake"
   "CMakeFiles/sieve.dir/DependInfo.cmake"
   "CMakeFiles/BigInteger.dir/DependInfo.cmake"
+  "CMakeFiles/FenwickTree.dir/DependInfo.cmake"
   "CMakeFiles/random_workspace.dir/DependInfo.cmake"
   "CMakeFiles/BFS.dir/DependInfo.cmake"
   "CMakeFiles/BigMod.dir/DependInfo.cmake"

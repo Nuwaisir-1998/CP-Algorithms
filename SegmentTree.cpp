@@ -6,7 +6,7 @@ using namespace std;
 typedef long long ll;
 typedef vector<int> vi;
 
-class segmentTree{              // Segment tree to range minimum query
+class segmentTree{              // Segment tree for range minimum query
     vi st, A;                   // st is the array for binary tree. Index 1 is the root
     int n;
     int left(int p){ return 2*p; }
@@ -68,6 +68,7 @@ int main(){
     ios::sync_with_stdio(false);
     vi a = {1, 8, 5, -2, 2, 5, 9, 2, 6};
     segmentTree segmentTree(a);
+
     cout << a[segmentTree.RMQ(0, 5)] << "\n";
     segmentTree.update(1, -10);
     a[1] = -10;

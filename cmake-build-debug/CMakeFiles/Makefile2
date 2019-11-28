@@ -58,6 +58,7 @@ all: CMakeFiles/DSU.dir/all
 all: CMakeFiles/DFS.dir/all
 all: CMakeFiles/sieve.dir/all
 all: CMakeFiles/BigInteger.dir/all
+all: CMakeFiles/FenwickTree.dir/all
 all: CMakeFiles/random_workspace.dir/all
 all: CMakeFiles/BFS.dir/all
 all: CMakeFiles/BigMod.dir/all
@@ -70,6 +71,7 @@ clean: CMakeFiles/DSU.dir/clean
 clean: CMakeFiles/DFS.dir/clean
 clean: CMakeFiles/sieve.dir/clean
 clean: CMakeFiles/BigInteger.dir/clean
+clean: CMakeFiles/FenwickTree.dir/clean
 clean: CMakeFiles/random_workspace.dir/clean
 clean: CMakeFiles/BFS.dir/clean
 clean: CMakeFiles/BigMod.dir/clean
@@ -88,7 +90,7 @@ preinstall:
 CMakeFiles/SegmentTree.dir/all:
 	$(MAKE) -f CMakeFiles/SegmentTree.dir/build.make CMakeFiles/SegmentTree.dir/depend
 	$(MAKE) -f CMakeFiles/SegmentTree.dir/build.make CMakeFiles/SegmentTree.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=11,12 "Built target SegmentTree"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=13,14 "Built target SegmentTree"
 .PHONY : CMakeFiles/SegmentTree.dir/all
 
 # Build rule for subdir invocation for target.
@@ -169,7 +171,7 @@ CMakeFiles/DFS.dir/clean:
 CMakeFiles/sieve.dir/all:
 	$(MAKE) -f CMakeFiles/sieve.dir/build.make CMakeFiles/sieve.dir/depend
 	$(MAKE) -f CMakeFiles/sieve.dir/build.make CMakeFiles/sieve.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=15,16 "Built target sieve"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=17,18 "Built target sieve"
 .PHONY : CMakeFiles/sieve.dir/all
 
 # Build rule for subdir invocation for target.
@@ -217,13 +219,40 @@ CMakeFiles/BigInteger.dir/clean:
 .PHONY : CMakeFiles/BigInteger.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/FenwickTree.dir
+
+# All Build rule for target.
+CMakeFiles/FenwickTree.dir/all:
+	$(MAKE) -f CMakeFiles/FenwickTree.dir/build.make CMakeFiles/FenwickTree.dir/depend
+	$(MAKE) -f CMakeFiles/FenwickTree.dir/build.make CMakeFiles/FenwickTree.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=11,12 "Built target FenwickTree"
+.PHONY : CMakeFiles/FenwickTree.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/FenwickTree.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/FenwickTree.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/FenwickTree.dir/rule
+
+# Convenience name for target.
+FenwickTree: CMakeFiles/FenwickTree.dir/rule
+
+.PHONY : FenwickTree
+
+# clean rule for target.
+CMakeFiles/FenwickTree.dir/clean:
+	$(MAKE) -f CMakeFiles/FenwickTree.dir/build.make CMakeFiles/FenwickTree.dir/clean
+.PHONY : CMakeFiles/FenwickTree.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/random_workspace.dir
 
 # All Build rule for target.
 CMakeFiles/random_workspace.dir/all:
 	$(MAKE) -f CMakeFiles/random_workspace.dir/build.make CMakeFiles/random_workspace.dir/depend
 	$(MAKE) -f CMakeFiles/random_workspace.dir/build.make CMakeFiles/random_workspace.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=13,14 "Built target random_workspace"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug/CMakeFiles --progress-num=15,16 "Built target random_workspace"
 .PHONY : CMakeFiles/random_workspace.dir/all
 
 # Build rule for subdir invocation for target.

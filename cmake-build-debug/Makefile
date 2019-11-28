@@ -176,6 +176,19 @@ BigInteger/fast:
 .PHONY : BigInteger/fast
 
 #=============================================================================
+# Target rules for targets named FenwickTree
+
+# Build rule for target.
+FenwickTree: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 FenwickTree
+.PHONY : FenwickTree
+
+# fast build rule for target.
+FenwickTree/fast:
+	$(MAKE) -f CMakeFiles/FenwickTree.dir/build.make CMakeFiles/FenwickTree.dir/build
+.PHONY : FenwickTree/fast
+
+#=============================================================================
 # Target rules for targets named random_workspace
 
 # Build rule for target.
@@ -349,6 +362,33 @@ DSU.cpp.s:
 	$(MAKE) -f CMakeFiles/DSU.dir/build.make CMakeFiles/DSU.dir/DSU.cpp.s
 .PHONY : DSU.cpp.s
 
+FenwickTree.o: FenwickTree.cpp.o
+
+.PHONY : FenwickTree.o
+
+# target to build an object file
+FenwickTree.cpp.o:
+	$(MAKE) -f CMakeFiles/FenwickTree.dir/build.make CMakeFiles/FenwickTree.dir/FenwickTree.cpp.o
+.PHONY : FenwickTree.cpp.o
+
+FenwickTree.i: FenwickTree.cpp.i
+
+.PHONY : FenwickTree.i
+
+# target to preprocess a source file
+FenwickTree.cpp.i:
+	$(MAKE) -f CMakeFiles/FenwickTree.dir/build.make CMakeFiles/FenwickTree.dir/FenwickTree.cpp.i
+.PHONY : FenwickTree.cpp.i
+
+FenwickTree.s: FenwickTree.cpp.s
+
+.PHONY : FenwickTree.s
+
+# target to generate assembly for a file
+FenwickTree.cpp.s:
+	$(MAKE) -f CMakeFiles/FenwickTree.dir/build.make CMakeFiles/FenwickTree.dir/FenwickTree.cpp.s
+.PHONY : FenwickTree.cpp.s
+
 SegmentTree.o: SegmentTree.cpp.o
 
 .PHONY : SegmentTree.o
@@ -443,6 +483,7 @@ help:
 	@echo "... sieve"
 	@echo "... edit_cache"
 	@echo "... BigInteger"
+	@echo "... FenwickTree"
 	@echo "... random_workspace"
 	@echo "... BFS"
 	@echo "... BigMod"
@@ -461,6 +502,9 @@ help:
 	@echo "... DSU.o"
 	@echo "... DSU.i"
 	@echo "... DSU.s"
+	@echo "... FenwickTree.o"
+	@echo "... FenwickTree.i"
+	@echo "... FenwickTree.s"
 	@echo "... SegmentTree.o"
 	@echo "... SegmentTree.i"
 	@echo "... SegmentTree.s"

@@ -11,3 +11,5 @@ add_executable(random_workspace random_workspace.cpp)
 add_executable(BigMod BigMod.cpp)
 add_executable(DSU DSU.cpp)
 add_executable(SegmentTree SegmentTree.cpp)
+add_executable(FenwickTree FenwickTree.cpp)
+

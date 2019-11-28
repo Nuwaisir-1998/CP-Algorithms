@@ -2,14 +2,15 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="CP_Algorithms" targetName="BFS" />
-      <config projectName="CP_Algorithms" targetName="SegmentTree" />
-      <config projectName="CP_Algorithms" targetName="DSU" />
-      <config projectName="CP_Algorithms" targetName="BigInteger" />
-      <config projectName="CP_Algorithms" targetName="random_workspace" />
-      <config projectName="CP_Algorithms" targetName="BigMod" />
-      <config projectName="CP_Algorithms" targetName="sieve" />
       <config projectName="CP_Algorithms" targetName="DFS" />
+      <config projectName="CP_Algorithms" targetName="BFS" />
+      <config projectName="CP_Algorithms" targetName="sieve" />
+      <config projectName="CP_Algorithms" targetName="FenwickTree" />
+      <config projectName="CP_Algorithms" targetName="BigInteger" />
+      <config projectName="CP_Algorithms" targetName="DSU" />
+      <config projectName="CP_Algorithms" targetName="BigMod" />
+      <config projectName="CP_Algorithms" targetName="SegmentTree" />
+      <config projectName="CP_Algorithms" targetName="random_workspace" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -21,11 +22,13 @@
     <list default="true" id="3ef21f67-23a9-4ff2-aeb3-11a30a09ce3c" name="Default Changelist" comment="DFS.cpp updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SegmentTree.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SegmentTree.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/random_workspace.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/random_workspace.dir/random_workspace.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/sieve.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/sieve.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CP_Algorithms.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CP_Algorithms.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
@@ -67,7 +70,7 @@
     <property name="DatabaseDriversLRU" value="oracle" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -81,7 +84,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="CMake Application.SegmentTree">
+  <component name="RunManager" selected="CMake Application.FenwickTree">
     <configuration name="BFS" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CP_Algorithms" TARGET_NAME="BFS" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CP_Algorithms" RUN_TARGET_NAME="BFS">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -107,6 +110,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FenwickTree" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CP_Algorithms" TARGET_NAME="FenwickTree" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CP_Algorithms" RUN_TARGET_NAME="FenwickTree">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SegmentTree" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CP_Algorithms" TARGET_NAME="SegmentTree" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CP_Algorithms" RUN_TARGET_NAME="SegmentTree">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -128,6 +136,7 @@
       <item itemvalue="CMake Application.BigMod" />
       <item itemvalue="CMake Application.DFS" />
       <item itemvalue="CMake Application.DSU" />
+      <item itemvalue="CMake Application.FenwickTree" />
       <item itemvalue="CMake Application.random_workspace" />
       <item itemvalue="CMake Application.SegmentTree" />
       <item itemvalue="CMake Application.sieve" />
@@ -160,7 +169,8 @@
       <workItem from="1574657137634" duration="702000" />
       <workItem from="1574686305413" duration="2364000" />
       <workItem from="1574727126530" duration="9240000" />
-      <workItem from="1574813226956" duration="22459000" />
+      <workItem from="1574813226956" duration="22705000" />
+      <workItem from="1574900973570" duration="9905000" />
     </task>
     <task id="LOCAL-00001" summary="DFS.cpp added">
       <created>1572979833892</created>
@@ -211,14 +221,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/random_workspace.cpp</url>
-          <line>98</line>
-          <option name="timeStamp" value="13" />
+          <url>file://$PROJECT_DIR$/SegmentTree.cpp</url>
+          <line>72</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/SegmentTree.cpp</url>
-          <line>71</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/random_workspace.cpp</url>
+          <line>88</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/FenwickTree.cpp</url>
+          <line>40</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

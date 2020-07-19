@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-typedef vector<ll> vi;
+typedef vector<ll> vll;
 
 class segmentTree{              // Segment tree for range minimum query
-    vi st, A;                   // st is the array for binary tree. Index 1 is the root
+    vll st, A;                   // st is the array for binary tree. Index 1 is the root
     ll n;
     ll left(ll p){ return 2*p; }
     ll right(ll p){ return 2*p + 1; }
@@ -46,7 +46,7 @@ class segmentTree{              // Segment tree for range minimum query
         }
     }
 public:
-    segmentTree(const vi _A){
+    segmentTree(const vll _A){
         A = _A;
         n = A.size();
         st.assign(4*n, 0);
@@ -63,7 +63,7 @@ public:
 
 int main(){
     ios::sync_with_stdio(false);
-    vi a = {1, 8, 5, -2, 2, 5, 9, 2, 6};
+    vll a = {1, 8, 5, -2, 2, 5, 9, 2, 6};
     segmentTree segmentTree(a);
 
     cout << a[segmentTree.RMQ(0, 5)] << "\n";

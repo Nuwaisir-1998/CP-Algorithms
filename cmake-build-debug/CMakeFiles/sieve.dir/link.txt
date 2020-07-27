@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/sieve.dir/sieve.cpp.o  -o sieve 

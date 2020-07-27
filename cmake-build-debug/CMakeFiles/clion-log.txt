@@ -1,4 +1,0 @@
-/home/nuwaisir/Downloads/clion-2019.1.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/nuwaisir/CP_Stuffs/CP-Algorithms
--- Configuring done
--- Generating done
--- Build files have been written to: /home/nuwaisir/CP_Stuffs/CP-Algorithms/cmake-build-debug

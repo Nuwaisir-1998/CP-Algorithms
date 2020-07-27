@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/DFS.dir/DFS.cpp.o  -o DFS 

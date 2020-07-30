@@ -6,7 +6,14 @@ typedef long long ll;
 	We consider infinite number of each coins in this case.
 	See the other coin_change code for the limited coin case.
 	
-    dp[i] stores the number of ways to get the value i using a subset of coins from 
+	Problem 1: Determine the minimum number of coins required to make a value.
+	Problem 2: Determine the number of ways to make a value
+	
+	Solution to Problem 1:
+	-> dp[value] = 1 + min(dp[value - coins[j]) // for all j
+	
+	Solution to problem 2:
+    -> dp[i] stores the number of ways to get the value i using a subset of coins from 
     coins array. Note that, we are counting the number of ways we can COMBINE a subset of 
     coins from coins array, not PERMUTE. For example, 4 = 1 + 3 = 3 + 1, we are considering
     both ways same.
@@ -14,6 +21,7 @@ typedef long long ll;
     # But if we want to count the permutation, we need to interchange the order
     of the nested for loop. For all possible i, we need to traverse the whole coins array and
     count the number of ways. In this way, 4 = 1 + 3 = 3 + 1, both ways will be counted.
+	
 */
 
 ll coin_change(vector<ll> coins, ll target){

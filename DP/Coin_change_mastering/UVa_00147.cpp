@@ -3,7 +3,7 @@ using namespace std;
 typedef long long ll;
 
 vector<ll> dp(30002, 0);
-ll coin_change(vector<ll> coins, ll target){
+ll coin_change(vector<ll> & coins, ll target){
     dp[0] = 1;
     for(ll i=0;i<coins.size();i++){
         for(ll j=coins[i];j<=target; j++){

@@ -20,7 +20,7 @@ ll coin_change(vector<ll> & coins, ll target){
                 dp[i][j] = 1;
                 continue;
             }
-            dp[i][j] = dp[i-1][j];	// I did mistake first by putting this line inside the following if
+            dp[i][j] = dp[i-1][j];	// I did mistake first by putting this inside the following if
             if(j - coins[i] >= 0)
                 dp[i][j] |= dp[i-1][j - coins[i]];
         }

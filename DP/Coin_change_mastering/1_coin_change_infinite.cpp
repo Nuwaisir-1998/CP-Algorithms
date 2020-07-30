@@ -24,7 +24,7 @@ typedef long long ll;
 	
 */
 
-ll coin_change(vector<ll> coins, ll target){
+ll coin_change(vector<ll> & coins, ll target){
     vector<ll> dp(target + 1, 0);
     dp[0] = 1;
     for(int i=0;i<coins.size();i++){

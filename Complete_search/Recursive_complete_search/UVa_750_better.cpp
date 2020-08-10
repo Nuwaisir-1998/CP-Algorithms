@@ -17,9 +17,7 @@ void printv(vector<int> & v) {for(auto ele : v) cout << ele+1 << " "; cout << "\
 
 
 vector<int> column(8);
-vector<bool> row(8);
-vector<bool> rd(15);
-vector<bool> ld(15);
+bitset<30> row, ld, rd;
 int cnt;
 
 void backtrack(int a, int b, int col){

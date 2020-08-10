@@ -9,6 +9,12 @@ typedef long long ll;
 
 void printv(vector<int> & v) {for(auto ele : v) cout << ele+1 << " "; cout << "\n";}
 
+/**************************** *************************/
+
+	See CP-3 page 74-76
+
+/**************************** *************************/
+
 vector<int> column(8);
 int cnt;
 

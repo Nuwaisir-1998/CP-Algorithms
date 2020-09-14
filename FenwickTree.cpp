@@ -7,51 +7,47 @@ using namespace std;
 typedef long long ll;
 typedef vector<int> vi;
 
-class FenwickTree {
-    vi ft, A;
+/********************************************/
+
+//    Code frome cp-algorithms.com/data_structures/fenwick.html
+
+/********************************************/
+
+struct FenwickTree {
+    vector<int> bit;  // binary indexed tree
     int n;
-public:
-    int LSOne(int x) {
-        return (x & (-x));
+
+    FenwickTree(int n) {
+        this->n = n;
+        bit.assign(n, 0);
     }
 
-    int rsq(int b) {
-        int sum = 0;
-        for (; b; b -= LSOne(b)) {
-            sum += ft[b];
-        }
-        return sum;
+    FenwickTree(vector<int> a) : FenwickTree(a.size()) {
+        for (size_t i = 0; i < a.size(); i++)
+            add(i, a[i]);
     }
 
-    int rsq(int a, int b) {
-        return rsq(b) - (a == 1 ? 0 : rsq(a - 1));
+    int sum(int r) {
+        int ret = 0;
+        for (; r >= 0; r = (r & (r + 1)) - 1)
+            ret += bit[r];
+        return ret;
     }
 
-    void adjust(int idx, int val) {
-        for (; idx < (int) ft.size(); idx += LSOne(idx)) {
-            ft[idx] += val;
-        }
+    int sum(int l, int r) {
+        return sum(r) - sum(l - 1);
     }
 
-    FenwickTree(vi _A) {
-        A = _A;
-        n = A.size();
-        ft.assign(n + 1, 0);
-        ft.push_back(0);
-        for (int i = 1; i < n + 1; i++) {
-            adjust(i, A[i-1]);
-        }
+    void add(int idx, int delta) {
+        for (; idx < n; idx = idx | (idx + 1))
+            bit[idx] += delta;
     }
-
-//    FenwickTree(int n) : n(n) {
-//        ft.assign(n+1, 0);
-//    }
 };
 
 int main(){
     ios::sync_with_stdio(false);
     vi f = {2,4,5,5,6,6,6,7,7,8,9};
     FenwickTree ft(f);
-    cout << ft.rsq(4, 6) << "\n"; // 1-indexed
+    cout << ft.sum(4, 6) << "\n"; // 1-indexed
     return 0;
 }

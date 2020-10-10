@@ -12,9 +12,14 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-#define MX 10000010
 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vll;
+typedef pair<ll, ll> pll;
+typedef vector<pll> vpll;
+
+#define MX 1000001
 vector<ll> primes;
 bitset<MX> isNotPrime;                       // Compact STL for Sieve, better than vector<bool> !!
 
@@ -49,7 +54,7 @@ bool isPrime(ll x) {
 
 int main() {
     ios::sync_with_stdio(false);
-    sieve(10000000);
+    sieve(1000000);
     cout << isPrime(2147483647) << "\n";
     cout << isPrime(136117223863LL) << "\n";
     return 0;

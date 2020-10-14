@@ -56,25 +56,25 @@ struct segTree {
 /**      (l, r) is the main segment      **/
 /**      sum(l, r) => sum of [l, r), notice that, r is not included in the segment **/
     ll size;
-    vector<ll> mins;
+    vector<ll> sums;
 
     void init(ll n){
         size = 1;
         while(size < n) size *= 2;
-        mins.assign(2 * size, 0LL);
+        sums.assign(2 * size, 0LL);
     }
 
     void build(vector<ll> & a, ll x, ll lx, ll rx){
         if(rx - lx == 1){
             if(lx < (ll)a.size()){ // checking this as we added some extra 0s to the main array
-                mins[x] = a[lx];
+                sums[x] = a[lx];
             }
             return;
         }
         ll m = (lx + rx) / 2;
         build(a, 2 * x + 1, lx, m);
         build(a, 2 * x + 2, m, rx);
-        mins[x] = min(mins[2 * x + 1], mins[2 * x + 2]);    /** changable **/
+        sums[x] = sums[2 * x + 1] + sums[2 * x + 2];    /** changable **/
     }
 
     void build(vector<ll> & a){
@@ -83,7 +83,7 @@ struct segTree {
 
     void set(ll i, ll v, ll x, ll lx, ll rx){
         if(rx - lx == 1) {
-            mins[x] = v;
+            sums[x] = v;
             return;
         }
         ll m = (lx + rx) / 2;
@@ -92,24 +92,24 @@ struct segTree {
         }else{
             set(i, v, 2 * x + 2, m,  rx);
         }
-        mins[x] = min(mins[2 * x + 1], mins[2 * x + 2]);    /** changable **/
+        sums[x] = sums[2 * x + 1] + sums[2 * x + 2];    /** changable **/
     }
 
     void set(ll i, ll v){
         set(i, v, 0, 0, size);
     }
 
-    ll rmq(ll l, ll r, ll x, ll lx, ll rx){
-        if(lx >= r or l >= rx) return INF;                /** changable **/
-        if(lx >= l and rx <= r) return mins[x];
+    ll sum(ll l, ll r, ll x, ll lx, ll rx){
+        if(lx >= r or l >= rx) return 0;                /** changable **/
+        if(lx >= l and rx <= r) return sums[x];
         ll m = (lx + rx) / 2;
-        ll s1 = rmq(l, r, 2 * x + 1, lx, m);
-        ll s2 = rmq(l, r, 2 * x + 2, m, rx);
-        return min(s1, s2);                                 /** changable **/
+        ll s1 = sum(l, r, 2 * x + 1, lx, m);
+        ll s2 = sum(l, r, 2 * x + 2, m, rx);
+        return s1 + s2;                                 /** changable **/
     }
 
-    ll rmq(ll l, ll r){
-        return rmq(l, r, 0, 0, size);
+    ll sum(ll l, ll r){
+        return sum(l, r, 0, 0, size);
     }
 };
 
@@ -133,7 +133,7 @@ void solve(ll cs){
         }else{
             ll l, r;
             cin >> l >> r;
-            cout << st.rmq(l, r) << endl;
+            cout << st.sum(l, r) << endl;
         }
     }   
 }

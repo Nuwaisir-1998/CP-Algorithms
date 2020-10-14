@@ -52,93 +52,90 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 
-void count_sort(vector<ll> &p, vector<ll> &c){
-    ll n = p.size();
-    vector<ll> cnt(n);
-    for(auto x : c) cnt[x]++;
-    vector<ll> p_new(n);
-    vector<ll> pos(n);
-    pos[0] = 0;
-    for(ll i=1;i<n;i++){
-        pos[i] = pos[i-1] + cnt[i-1];
+struct segTree {
+/**      (l, r) is the main segment      **/
+/**      sum(l, r) => sum of [l, r), notice that, r is not included in the segment **/
+    ll size;
+    vector<ll> sums;
+
+    void init(ll n){
+        size = 1;
+        while(size < n) size *= 2;
+        sums.assign(2 * size, 0LL);
     }
-    for(auto x : p){
-        ll i = c[x];
-        p_new[pos[i]] = x;
-        pos[i]++;
-    }
-    p = p_new;
-}
 
-
-vector<ll> build_suffix_array(string s){
-    s += "$";
-    ll n = s.size();
-    vector<ll> p(n), c(n);
-    {
-        // k = 0
-        vector<pair<char, ll>> a(n);
-        for(ll i=0;i<n;i++) a[i] = {s[i], i};
-        sort(a.begin(), a.end());
-
-        for(ll i=0;i<n;i++) p[i] = a[i].second;
-        c[p[0]] = 0;
-        for(ll i=1;i<n;i++){
-            if(a[i].first == a[i - 1].first){
-                c[p[i]] = c[p[i-1]];
-            }else{
-                c[p[i]] = c[p[i-1]] + 1;
+    void build(vector<ll> & a, ll x, ll lx, ll rx){
+        if(rx - lx == 1){
+            if(lx < (ll)a.size()){ // checking this as we added some extra 0s to the main array
+                sums[x] = a[lx];
             }
+            return;
         }
+        ll m = (lx + rx) / 2;
+        build(a, 2 * x + 1, lx, m);
+        build(a, 2 * x + 2, m, rx);
+        sums[x] = sums[2 * x + 1] + sums[2 * x + 2];
     }
 
-    ll k = 0;
-    while((1 << k) < n){
-        for(ll i=0;i<n;i++){
-            p[i] = (p[i] - (1 << k) + n) % n;
-        }
-        count_sort(p, c);
-
-        vector<ll> c_new(n);
-        c_new[p[0]] = 0;
-        for(ll i=1;i<n;i++){
-            pll prev = {c[p[i-1]], c[(p[i-1] + (1 << k)) % n]};
-            pll now = {c[p[i]], c[(p[i] + (1 << k)) % n]};
-            if(now == prev){
-                c_new[p[i]] = c_new[p[i-1]];
-            }else{
-                c_new[p[i]] = c_new[p[i-1]] + 1;
-            }
-        }
-        c = c_new;
-        k++;
+    void build(vector<ll> & a){
+        build(a, 0, 0, size);
     }
 
-    // Calculating LCP array, which gives the LCP (Longest Common Prefix between ith, (i+1)th prefix in the "Suffix Array")
-
-    vector<ll> lcp(n);
-    k = 0;
-    for(ll i=0;i<n-1;i++){
-        ll pi = c[i];
-        ll j = p[pi - 1];
-        while(s[i + k] == s[j + k]) k++;
-        lcp[pi] = k;
-        k = max(k - 1, 0LL);
+    void set(ll i, ll v, ll x, ll lx, ll rx){
+        if(rx - lx == 1) {
+            sums[x] = v;
+            return;
+        }
+        ll m = (lx + rx) / 2;
+        if(i < m){
+            set(i, v, 2 * x + 1, lx,  m);
+        }else{
+            set(i, v, 2 * x + 2, m,  rx);
+        }
+        sums[x] = sums[2 * x + 1] + sums[2 * x + 2];
     }
 
-    // for(ll i=0;i<n;i++){
-    //     cout << lcp[i] << " " << p[i] << " " << s.substr(p[i], n-p[i]) << endl;
-    // }
-    
-    return p;
-}
+    void set(ll i, ll v){
+        set(i, v, 0, 0, size);
+    }
+
+    ll sum(ll l, ll r, ll x, ll lx, ll rx){
+        if(lx >= r or l >= rx) return 0;
+        if(lx >= l and rx <= r) return sums[x];
+        ll m = (lx + rx) / 2;
+        ll s1 = sum(l, r, 2 * x + 1, lx, m);
+        ll s2 = sum(l, r, 2 * x + 2, m, rx);
+        return s1 + s2;
+    }
+
+    ll sum(ll l, ll r){
+        return sum(l, r, 0, 0, size);
+    }
+};
 
 void solve(ll cs){
     ll n, k, i, j, l, m;
-    string s;
-    cin >> s;
-    vector<ll> p = build_suffix_array(s);
-    
+    cin >> n >> m;
+    segTree st;
+    st.init(n);
+    vector<ll> a(n);
+    for(i=0;i<n;i++){
+        cin >> a[i];
+    }
+    st.build(a);
+    while(m--){
+        ll op;
+        cin >> op;
+        if(op == 1){
+            ll i, v;
+            cin >> i >> v;
+            st.set(i, v);
+        }else{
+            ll l, r;
+            cin >> l >> r;
+            cout << st.sum(l, r) << endl;
+        }
+    }   
 }
 
 int main()

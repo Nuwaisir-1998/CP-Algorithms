@@ -64,6 +64,10 @@ struct segTree {
 
     vector<item> mins_freq;
 
+    segTree(ll n){
+        init(n);
+    }
+
     item merge(item a, item b){
         if(a.val < b.val) return a;
         if(a.val > b.val) return b;
@@ -77,7 +81,7 @@ struct segTree {
     }
 
     void build(vector<ll> & a, ll x, ll lx, ll rx){
-        if(rx - lx == 1){
+        if(rx == lx){
             if(lx < (ll)a.size()){ // checking this as we added some extra 0s to the main array
                 mins_freq[x] = {a[lx], 1};
             }
@@ -85,51 +89,50 @@ struct segTree {
         }
         ll m = (lx + rx) / 2;
         build(a, 2 * x + 1, lx, m);
-        build(a, 2 * x + 2, m, rx);
+        build(a, 2 * x + 2, m+1, rx);
         mins_freq[x] = merge(mins_freq[2 * x + 1], mins_freq[2 * x + 2]);    /** changable **/
     }
 
     void build(vector<ll> & a){
-        build(a, 0, 0, size);
+        build(a, 0, 0, size-1);
     }
 
     void set(ll i, ll v, ll x, ll lx, ll rx){
-        if(rx - lx == 1) {
+        if(rx == lx) {
             mins_freq[x] = {v, 1};
             return;
         }
         ll m = (lx + rx) / 2;
-        if(i < m){
+        if(i <= m){
             set(i, v, 2 * x + 1, lx,  m);
         }else{
-            set(i, v, 2 * x + 2, m,  rx);
+            set(i, v, 2 * x + 2, m+1,  rx);
         }
         mins_freq[x] = merge(mins_freq[2 * x + 1], mins_freq[2 * x + 2]);    /** changable **/
     }
 
     void set(ll i, ll v){
-        set(i, v, 0, 0, size);
+        set(i, v, 0, 0, size-1);
     }
 
     item rmq(ll l, ll r, ll x, ll lx, ll rx){
-        if(lx >= r or l >= rx) return {INF, 0LL};                /** changable **/
+        if(lx > r or l > rx) return {INF, 0LL};                /** changable **/
         if(lx >= l and rx <= r) return mins_freq[x];
         ll m = (lx + rx) / 2;
         item s1 = rmq(l, r, 2 * x + 1, lx, m);
-        item s2 = rmq(l, r, 2 * x + 2, m, rx);
+        item s2 = rmq(l, r, 2 * x + 2, m+1, rx);
         return merge(s1, s2);                                 /** changable **/
     }
 
     item rmq(ll l, ll r){
-        return rmq(l, r, 0, 0, size);
+        return rmq(l, r, 0, 0, size-1);
     }
 };
 
 void solve(ll cs){
     ll n, k, i, j, l, m;
     cin >> n >> m;
-    segTree st;
-    st.init(n);
+    segTree st(n);
     vector<ll> a(n);
     for(i=0;i<n;i++){
         cin >> a[i];
@@ -145,7 +148,7 @@ void solve(ll cs){
         }else{
             ll l, r;
             cin >> l >> r;
-            item ans = st.rmq(l, r);
+            item ans = st.rmq(l, r-1);
             cout << ans.val << " " << ans.freq << endl;
         }
     }   

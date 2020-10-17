@@ -1,3 +1,11 @@
+/*********************************************************************************************/
+//                            SEGMENT TREE FOR RANGE MINIMUM QUERY
+//                  mins(l, r) => returns the minimum value of [l, r] (inclusive)
+//                  set(i, val) => sets the value of the ith index to val
+//
+/*********************************************************************************************/
+
+
 #include <bits/stdc++.h>
  
 #include <ext/pb_ds/assoc_container.hpp>
@@ -58,6 +66,10 @@ struct segTree {
     ll size;
     vector<ll> mins;
 
+    segTree(ll n){
+        init(n);
+    }
+
     void init(ll n){
         size = 1;
         while(size < n) size *= 2;
@@ -65,7 +77,7 @@ struct segTree {
     }
 
     void build(vector<ll> & a, ll x, ll lx, ll rx){
-        if(rx - lx == 1){
+        if(rx == lx){
             if(lx < (ll)a.size()){ // checking this as we added some extra 0s to the main array
                 mins[x] = a[lx];
             }
@@ -73,51 +85,50 @@ struct segTree {
         }
         ll m = (lx + rx) / 2;
         build(a, 2 * x + 1, lx, m);
-        build(a, 2 * x + 2, m, rx);
+        build(a, 2 * x + 2, m+1, rx);
         mins[x] = min(mins[2 * x + 1], mins[2 * x + 2]);    /** changable **/
     }
 
     void build(vector<ll> & a){
-        build(a, 0, 0, size);
+        build(a, 0, 0, size-1);
     }
 
     void set(ll i, ll v, ll x, ll lx, ll rx){
-        if(rx - lx == 1) {
+        if(rx == lx) {
             mins[x] = v;
             return;
         }
         ll m = (lx + rx) / 2;
-        if(i < m){
+        if(i <= m){
             set(i, v, 2 * x + 1, lx,  m);
         }else{
-            set(i, v, 2 * x + 2, m,  rx);
+            set(i, v, 2 * x + 2, m+1,  rx);
         }
         mins[x] = min(mins[2 * x + 1], mins[2 * x + 2]);    /** changable **/
     }
 
     void set(ll i, ll v){
-        set(i, v, 0, 0, size);
+        set(i, v, 0, 0, size-1);
     }
 
     ll rmq(ll l, ll r, ll x, ll lx, ll rx){
-        if(lx >= r or l >= rx) return INF;                /** changable **/
+        if(lx > r or l > rx) return INF;                /** changable **/
         if(lx >= l and rx <= r) return mins[x];
         ll m = (lx + rx) / 2;
         ll s1 = rmq(l, r, 2 * x + 1, lx, m);
-        ll s2 = rmq(l, r, 2 * x + 2, m, rx);
+        ll s2 = rmq(l, r, 2 * x + 2, m+1, rx);
         return min(s1, s2);                                 /** changable **/
     }
 
     ll rmq(ll l, ll r){
-        return rmq(l, r, 0, 0, size);
+        return rmq(l, r, 0, 0, size-1);
     }
 };
 
 void solve(ll cs){
     ll n, k, i, j, l, m;
     cin >> n >> m;
-    segTree st;
-    st.init(n);
+    segTree st(n);
     vector<ll> a(n);
     for(i=0;i<n;i++){
         cin >> a[i];
@@ -133,7 +144,7 @@ void solve(ll cs){
         }else{
             ll l, r;
             cin >> l >> r;
-            cout << st.rmq(l, r) << endl;
+            cout << st.rmq(l, r-1) << endl;
         }
     }   
 }

@@ -25,6 +25,10 @@ typedef vector<pll> vpll;
 #define nl '\n'
 #define MAX(x) *max_element(all(x))
 #define MIN(x) *min_element(all(x))
+#define ff first
+#define ss second
+#define vt vector
+#define FOR(n) for(i=0;i<n;i++)
  
 template <typename T>
 void printv(vector<T> &v){for (auto e : v) cout << e << ' ';cout << '\n';}
@@ -52,106 +56,94 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 
-struct item {
-    ll val;
-    ll freq;
-};
+vector<vector<ll>> adj;
+vector<vector<ll>> weight;
+vector<ll> dist;
+vector<ll> par;
 
-struct segTree {
-/**      (l, r) is the main segment      **/
-/**      sum(l, r) => sum of [l, r), notice that, r is not included in the segment **/
-    ll size;
-
-    vector<item> mins_freq;
-
-    segTree(ll n){
-        init(n);
-    }
-
-    item merge(item a, item b){
-        if(a.val < b.val) return a;
-        if(a.val > b.val) return b;
-        return {a.val, a.freq + b.freq};
-    }
-
-    void init(ll n){
-        size = 1;
-        while(size < n) size *= 2;
-        mins_freq.resize(2 * size);
-    }
-
-    void build(vector<ll> & a, ll x, ll lx, ll rx){
-        if(rx == lx){
-            if(lx < (ll)a.size()){ // checking this as we added some extra 0s to the main array
-                mins_freq[x] = {a[lx], 1};
+void dijkstra(ll s){
+    ll n = adj.size();
+    vector<bool> vis(n, false);
+    dist.assign(n, INF);
+    par.assign(n, -1);
+    // printv(par);
+    dist[s] = 0;
+    set<pll> st;
+    st.insert({0, s});
+    while(!st.empty()){
+        // for(auto ele : st) cout << "{" << ele.first << " " << ele.second << "}\n";
+        pll pu = *st.begin();
+        ll u = pu.second;
+        st.erase(st.begin());
+        vis[u] = true;
+        // cout << u << " : u\n";
+        // printv(adj[u]);
+        ll i = 0;
+        for(auto ele : adj[u]){
+            // cout << ele << " : ele\n";
+            if(dist[u] + weight[u][i] < dist[ele]){
+                st.erase({dist[ele], ele});
+                dist[ele] = dist[u] + weight[u][i];
+                par[ele] = u;
+                st.insert({dist[ele], ele});
             }
-            return;
+            i++;
         }
-        ll m = (lx + rx) / 2;
-        build(a, 2 * x + 1, lx, m);
-        build(a, 2 * x + 2, m+1, rx);
-        mins_freq[x] = merge(mins_freq[2 * x + 1], mins_freq[2 * x + 2]);    /** changable **/
     }
+    // printv(par);
+}
 
-    void build(vector<ll> & a){
-        build(a, 0, 0, size-1);
-    }
-
-    void set(ll i, ll v, ll x, ll lx, ll rx){
-        if(rx == lx) {
-            mins_freq[x] = {v, 1};
-            return;
-        }
-        ll m = (lx + rx) / 2;
-        if(i <= m){
-            set(i, v, 2 * x + 1, lx,  m);
-        }else{
-            set(i, v, 2 * x + 2, m+1,  rx);
-        }
-        mins_freq[x] = merge(mins_freq[2 * x + 1], mins_freq[2 * x + 2]);    /** changable **/
-    }
-
-    void set(ll i, ll v){
-        set(i, v, 0, 0, size-1);
-    }
-
-    item rmq(ll l, ll r, ll x, ll lx, ll rx){
-        if(lx > r or l > rx) return {INF, 0LL};                /** changable **/
-        if(lx >= l and rx <= r) return mins_freq[x];
-        ll m = (lx + rx) / 2;
-        item s1 = rmq(l, r, 2 * x + 1, lx, m);
-        item s2 = rmq(l, r, 2 * x + 2, m+1, rx);
-        return merge(s1, s2);                                 /** changable **/
-    }
-
-    item rmq(ll l, ll r){
-        return rmq(l, r, 0, 0, size-1);
-    }
-};
+vt<vt<ll>> min_dist(1001, vt<ll> (1001));
+vt<vt<ll>> x_dist(1001);
 
 void solve(ll cs){
-    ll n, k, i, j, l, m;
-    cin >> n >> m;
-    segTree st(n);
-    vector<ll> a(n);
-    for(i=0;i<n;i++){
-        cin >> a[i];
+    ll n, m, k, i, j, l, x, y, z;
+    cin >> n >> m >> k;
+    adj.resize(n);
+    weight.resize(n);
+    vt<pll> edges;
+    for(i=0;i<m;i++){
+        cin >> x >> y >> z;
+        x--, y--;
+        edges.push_back({x, y});
+        adj[x].push_back(y);
+        adj[y].push_back(x);
+        weight[x].push_back(z);
+        weight[y].push_back(z);
     }
-    st.build(a);
-    while(m--){
-        ll op;
-        cin >> op;
-        if(op == 1){
-            ll i, v;
-            cin >> i >> v;
-            st.set(i, v);
-        }else{
-            ll l, r;
-            cin >> l >> r;
-            item ans = st.rmq(l, r-1);
-            cout << ans.val << " " << ans.freq << endl;
+    vt<pll> in;
+    // for(i=0;i<n;i++){
+    //     for(j=0;j<n;j++){
+    //         dijkstra(i);
+    //         min_dist[i][j] = dist[j];
+    //         min_dist[j][i] = dist[j];
+    //     }
+    // }
+    for(i=0;i<k;i++){
+        cin >> x >> y;
+        x--; y--;
+        in.push_back({x, y});
+        dijkstra(x);
+        x_dist[x] = dist;
+        dijkstra(y);
+        x_dist[y] = dist;
+        // min_dist[x][y] = dist[y];
+        // min_dist[y][x] = dist[y];
+        // cout << min_dist[x][y] << endl;
+    }
+    ll ans = 0;
+    ll mn = INF;
+    for(i=0;i<m;i++){
+        // cout << "Del : " << edges[i].ff << " " << edges[i].ss << endl;
+        ans = 0;
+        for(auto ele : in){
+            ans += min({x_dist[ele.ff][ele.ss], x_dist[ele.ff][edges[i].ff] + x_dist[ele.ss][edges[i].ss], x_dist[ele.ff][edges[i].ss] + x_dist[ele.ss][edges[i].ff]});
         }
-    }   
+        mn = min(mn, ans);
+    }
+    cout << mn << endl;
+  
+    
 }
 
 int main()
@@ -166,6 +158,6 @@ int main()
     ll cs = 1;
     while (tt--)
         solve(cs++);
-    
+
     return 0;
 }

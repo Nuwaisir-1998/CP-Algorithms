@@ -24,6 +24,10 @@ typedef vector<pll> vpll;
 #define nl '\n'
 #define MAX(x) *max_element(all(x))
 #define MIN(x) *min_element(all(x))
+#define ff first
+#define ss second
+#define vt vector
+#define FOR(n) for(i=0;i<n;i++)
 
 template <typename T>
 void printv(vector<T> &v){for (auto e : v) cout << e << ' ';cout << '\n';}

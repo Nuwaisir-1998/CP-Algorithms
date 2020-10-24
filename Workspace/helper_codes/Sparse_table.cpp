@@ -56,69 +56,46 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 
-vector<vector<ll>> adj;
-vector<vector<ll>> weight;
-vector<ll> dist;
-vector<ll> par;
-
-void dijkstra(ll s){
-    ll n = adj.size();
-    vector<bool> vis(n, false);
-    dist.resize(n, INF);
-    par.resize(n, -1);
-    // printv(par);
-    dist[s] = 0;
-    set<pll> st;
-    st.insert({0, s});
-    while(!st.empty()){
-        // for(auto ele : st) cout << "{" << ele.first << " " << ele.second << "}\n";
-        pll pu = *st.begin();
-        ll u = pu.second;
-        st.erase(st.begin());
-        vis[u] = true;
-        // cout << u << " : u\n";
-        // printv(adj[u]);
-        ll i = 0;
-        for(auto ele : adj[u]){
-            // cout << ele << " : ele\n";
-            if(dist[u] + weight[u][i] < dist[ele]){
-                st.erase({dist[ele], ele});
-                dist[ele] = dist[u] + weight[u][i];
-                par[ele] = u;
-                st.insert({dist[ele], ele});
+struct sparse_table{
+    ll row, col;
+    vt<ll> v;
+    vt<vt<ll>> table;
+    sparse_table(vector<ll> v){
+        setV(v);
+    }
+    void setV(vt<ll> & v){
+        this -> v = v;
+        this -> row = v.size();
+        this -> col = log2(v.size()) + 1;
+        table.resize(row);
+        for(ll i=0;i<row;i++) table[i].resize(col);
+    }
+    void build_for_rmq(){
+        for(ll i=0;i<row;i++){
+            table[i][0] = v[i];
+        }
+        for(ll i=1;i<col;i++){
+            for(ll j=0; j+(1<<(i-1))<row;j++){
+                table[j][i] = min(table[j][i-1], table[j + (1 << (i - 1))][i-1]);
             }
-            i++;
         }
     }
-    // printv(par);
-}
+    ll rmq(ll l, ll r){             // inclusive
+        ll lg = log2(r - l + 1);
+        ll minimum = min(table[l][lg], table[r - (1 << lg) + 1][lg]);
+        return minimum;
+    }
+};
 
 void solve(ll cs){
-    ll i, j, k, l, n, m, x, y, z;
-    cin >> n >> m;
-    adj.resize(n);
-    weight.resize(n);
-    for(i=0;i<m;i++){
-        cin >> x >> y >> z;
-        x--, y--;
-        adj[x].push_back(y);
-        adj[y].push_back(x);
-        weight[x].push_back(z);
-        weight[y].push_back(z);
-    }
-    dijkstra(0);
-    if(dist[n-1] == INF) cout << -1 << "\n";
-    else{
-        i = n-1;
-        vector<ll> ans;
-        while(par[i] != -1){
-            ans.push_back(i+1);
-            i = par[i];
-        }
-        ans.push_back(i+1);
-        reverse(all(ans));
-        printv(ans);
-    }
+    ll n, i, j;
+    cin >> n;
+    vt<ll> v(n);
+    FOR(n) cin >> v[i];
+    sparse_table spt(v);
+    spt.build_for_rmq();
+    cout << spt.rmq(0,n-1) << endl;
+    
 }
 
 int main()
@@ -129,7 +106,7 @@ int main()
     freopen("out", "w", stdout);
 #endif // ONLINE_JUDGE
     ll tt = 1;
-    // cin >> tt;
+    cin >> tt;
     ll cs = 1;
     while (tt--)
         solve(cs++);

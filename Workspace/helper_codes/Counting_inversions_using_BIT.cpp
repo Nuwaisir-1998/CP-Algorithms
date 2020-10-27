@@ -56,20 +56,54 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 
+struct FenwickTree {
+    vector<ll> bit;  // binary indexed tree
+    ll n;
+
+    FenwickTree(ll n) {
+        this->n = n;
+        bit.assign(n, 0);
+    }
+
+    FenwickTree(vector<ll> a) : FenwickTree(a.size()) {
+        for (size_t i = 0; i < a.size(); i++)
+            add(i, a[i]);
+    }
+
+    ll sum(ll r) {
+        ll ret = 0;
+        for (; r >= 0; r = (r & (r + 1)) - 1)
+            ret += bit[r];
+        return ret;
+    }
+
+    ll sum(ll l, ll r) {
+        return sum(r) - sum(l - 1);
+    }
+
+    void add(ll idx, ll delta) {
+        for (; idx < n; idx = idx | (idx + 1))
+            bit[idx] += delta;
+    }
+};
+
 ll count_inversions(vt<ll> & v){
     ll n = v.size();
+    vt<ll> temp(n, 0);
+    FenwickTree ft(temp);
     ll ans = 0;
-    ordered_set ost;
     for(ll i=n-1;i>=0;i--){
-        ost.insert(v[i]);
-        ans += ost.order_of_key(v[i]);
+        ft.add(v[i], 1);
+        if(i < n-1){
+            ans += ft.sum(0, v[i]-1);
+        }
     }
     return ans;
 }
 
 void solve(ll cs){
-    ll a ,b, c, d, r, n, i, j, k;
-    vector<ll> v = {13, 3, 2};
+    ll a ,b, c, d, n, i, j, k, x;
+    vt<ll> v = {2, 1, 0};
     cout << count_inversions(v) << endl;
 }
 

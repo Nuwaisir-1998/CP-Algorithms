@@ -1,3 +1,5 @@
 1. When making a list of all factors of n, don't insert a number twice, when i == n / i.
 2. When you see logical operators, think in binary, instead of decimal.
 3. Don't hesitate (or be lazy -_-) to search google during a contest.
+4. Interesting question. Many people start to plateau at the level you describe. For me the way to move forward was to focus on consistency and not allow any excuses for failure. If you miss the idea to use binary search in a problem, you need to learn exactly why binary search was applicable, and see what hints could motivate you to think of binary search in a future problem. If your segtree had a bug, you need to practice coding segtrees until you never make that bug again, etc. It’s one of the hardest parts of the journey for sure. - Scott Wu.
+5. IMO most people don't try enough examples / small cases when solving problems. It takes time but is really important (samples often hide the true idea, and sometimes the pattern isn't obvious for N=2,3 and only becomes clear with higher N). - Scott Wu

@@ -56,42 +56,46 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 
-ll lis(vector<ll> const& a) {
-    ll n = a.size();
-    // const int INF = 1e9;
-    vector<ll> d(n+1, INF);
-    d[0] = -INF;
-
-    for (ll i = 0; i < n; i++) {
-        for (ll j = 1; j <= n; j++) {
-            if (d[j-1] < a[i] && a[i] < d[j])
-                d[j] = a[i];
+struct sparse_table{
+    ll row, col;
+    vt<ll> v;
+    vt<vt<ll>> table;
+    sparse_table(vector<ll> v){
+        setV(v);
+    }
+    void setV(vt<ll> & v){
+        this -> v = v;
+        this -> row = v.size();
+        this -> col = log2(v.size()) + 1;
+        table.resize(row);
+        for(ll i=0;i<row;i++) table[i].resize(col);
+    }
+    void build_for_rmq(){
+        for(ll i=0;i<row;i++){
+            table[i][0] = v[i];
+        }
+        for(ll i=1;i<col;i++){
+            for(ll j=0; j+(1<<(i-1))<row;j++){
+                table[j][i] = min(table[j][i-1], table[j + (1 << (i - 1))][i-1]);
+            }
         }
     }
-
-    ll ans = 0;
-    for (ll i = 0; i <= n; i++) {
-        if (d[i] < INF)
-            ans = i;
+    ll rmq(ll l, ll r){             // inclusive
+        ll lg = log2(r - l + 1);
+        ll minimum = min(table[l][lg], table[r - (1 << lg) + 1][lg]);
+        return minimum;
     }
-    return ans;
-}
+};
 
 void solve(ll cs){
-    ll n, i, j, k, x;
-    // cin >> n >> k;
-    // vt<ll> v(n);
-    // for(i=0;i<n;i++){
-    //     cin >> v[i];
-    // }
-    // vt<bool> mp(n, false);
-    // for(i=0;i<k;i++){
-    //     cin >> x;
-    //     x--;
-    //     mp[x] = true;
-    // }
+    ll n, i, j;
+    cin >> n;
+    vt<ll> v(n);
+    FOR(n) cin >> v[i];
+    sparse_table spt(v);
+    spt.build_for_rmq();
+    cout << spt.rmq(0,n-1) << endl;
     
-
 }
 
 int main()
@@ -101,9 +105,8 @@ int main()
     freopen("in", "r", stdin);
     freopen("out", "w", stdout);
 #endif // ONLINE_JUDGE
-
     ll tt = 1;
-    // cin >> tt;
+    cin >> tt;
     ll cs = 1;
     while (tt--)
         solve(cs++);

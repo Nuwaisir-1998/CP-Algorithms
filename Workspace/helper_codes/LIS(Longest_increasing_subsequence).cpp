@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
+ 
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/numeric>
-#include<windows.h>
  
 using namespace std;
 using namespace __gnu_pbds;
@@ -55,23 +55,34 @@ unordered_map<ll, ll, custom_hash> safe_map;
 gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
+
+ll LIS(vector<ll> & v) {    // Longest Increasing Subsequence
+    ll n = v.size();
+    vector<ll> dp(n+1, INF);
+    dp[0] = -INF;
+    for(ll i=0;i<n;i++){
+        ll j = upper_bound(dp.begin(), dp.end(), v[i]) - dp.begin();
+        if(dp[j-1] < v[i]){ // give <= if you want longest non-decreasing sub...
+            dp[j] = v[i];
+        }
+    }
+    ll ans = 0;
+
+    //The last index value having non INF value is the answer
+    for(ll i=0;i<dp.size();i++){
+        if(dp[i] != INF) ans = i;
+    }
+    return ans;
+}
+
 void solve(ll cs){
-    ll n, i, j, m, k;
+    ll n, i, j, k, x;
     cin >> n;
-    vt<ll> v(n);
+    vector<ll> v(n);
     for(i=0;i<n;i++){
         cin >> v[i];
     }
-    ll sum = 0;
-    for(i=1;i<n;i++){
-        if(v[i] - v[i-1] < 0){
-            sum += (v[i-1] - v[i]);
-        }
-    }
-    if(sum <= v[0]){
-        cout << "YES\n";
-    }else cout << "NO\n";
-    
+    cout << LIS(v) << endl;
 }
 
 int main()
@@ -81,9 +92,9 @@ int main()
     freopen("in", "r", stdin);
     freopen("out", "w", stdout);
 #endif // ONLINE_JUDGE
-    // sieve(1000000);
+
     ll tt = 1;
-    cin >> tt;
+    // cin >> tt;
     ll cs = 1;
     while (tt--)
         solve(cs++);

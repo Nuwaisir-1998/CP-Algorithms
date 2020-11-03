@@ -1,94 +1,128 @@
-#include <bits/stdc++.h>
- 
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-#include <ext/numeric>
- 
+/*
+_sieve _prime_factorize
+Program to print prime factorisation of a number in the range [1, 1e18].
+Input: an integer denoting the value of n
+Output: prime factors of n in ascending order, separated by '*' character
+Sample Input: 546534813485312
+Sample Output: 5*1373*89533*13216567543
+Time Complexity: O(1e7)
+Space Complexity: O(1e6)
+Stack Overflow Problem Link: https://stackoverflow.com/questions/50251565
+*/
+
+#include <iostream>
+#include <vector>
+
+#include <algorithm> // __gcd()
+#include <cstring> // memset()
+#include <cassert> // assert()
+
 using namespace std;
-using namespace __gnu_pbds;
-using namespace __gnu_cxx;
- 
-#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
- 
-typedef long long ll;
-typedef vector<int> vi;
-typedef vector<ll> vll;
-typedef pair<ll, ll> pll;
-typedef vector<pll> vpll;
- 
-#define all(x) (x).begin(), (x).end()
-#define MOD 1000000007
-#define MOD9 998244353
-#define PI acos(-1)
-#define MAXN 200005
-#define INF 1000000000000000000
-#define nl '\n'
-#define MAX(x) *max_element(all(x))
-#define MIN(x) *min_element(all(x))
- 
-template <typename T>
-void printv(vector<T> &v){for (auto e : v) cout << e << ' ';cout << '\n';}
-template <typename T>
-void dbg(T x) {cerr << "x is " << x << '\n';}
 
-struct custom_hash {
-    // to make unordered map safe
-    static uint64_t splitmix64(uint64_t x) {
-        // http://xorshift.di.unimi.it/splitmix64.c
-        x += 0x9e3779b97f4a7c15;
-        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
-        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
-        return x ^ (x >> 31);
-    }
- 
-    size_t operator()(uint64_t x) const {
-        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
-        return splitmix64(x + FIXED_RANDOM);
-    }
-};
- 
-unordered_map<ll, ll, custom_hash> safe_map;
-gp_hash_table<ll, ll, custom_hash> safe_hash_table;
+#define int long long
+typedef long double dbl;
 
-/********************************************************************/
+const int N=2e6+10;
 
-void solve(ll cs){
-    ll n, i, j, k, ra, rb, sa, sb, pa, pb;
-    cin >> n;
-    string s;
-    cin >> s;
-    ll a = 0, ab = 0, abc = 0;
-    ll mul = 1;
-    for(i=0;i<n;i++){
-        if(s[i] == 'a'){
-            a += mul;
-        }else if(s[i] == 'b'){
-            ab += a*mul;
-        }else if(s[i] == 'c'){
-            abc += ab*mul;
-        }else if(s[i] == '?'){
-            ll preva = a;
-            ll prevab = ab;
-            a = 3 * a + 1;
-            ab = ab * 3 + preva;
-            abc = 3 * abc + prevab;
-            mul += 3;
+int np, prime[N];
+bool isp[N];
+void sieve(int N) {
+    memset(isp, true, sizeof isp);
+    isp[0] = isp[1] = false;
+    for(int i=2; i<N; i++) if(isp[i]) {
+        prime[++np]=i;
+        for(int j=2*i; j<N; j+=i) {
+            isp[j]=false;
         }
     }
-    cout << abc << "\n";
 }
 
-int main()
-{
+inline int mul(int a, int b, int m) {
+	a%=m; if(a<0) a+=m;
+	b%=m; if(b<0) b+=m;
+	int q = ((dbl)a * (dbl)b) / (dbl)m;
+	int r = a*b - q*m;
+	return (r<0 ? r+m:r);
+}
+inline int pwr(int a, int n, int m) {
+    int ans(1);
+    while(n) {
+        if(n & 1) ans = mul(ans, a, m);
+        if(n >>= 1) a = mul(a, a, m);
+    }
+    return ans%m;
+}
+int myrand(int n) {
+	return rand()%n*rand()%n*rand()%n;
+}
+bool ispmiller(int p) { // O(30*logp)
+	if(p<2) return false;
+	if(p==2) return true;
+	if(p%2==0) return false;
+	int s=p-1; s>>=__builtin_ctzll(s);
+	for(int i=0; i<60; i++) {
+		int val=pwr(myrand(p-1)+1,s,p), temp=s;
+		while(temp!=p-1 and 1<val and val<p-1) {
+			val=mul(val,val,p);
+			temp<<=1;
+		}
+		if(val!=p-1 and temp%2==0) return false;
+	}
+	return true;
+}
+inline int pollardrho(int n) { // O(n^0.25)
+	if(n==1) return 1;
+	if(n%2==0) return 2;
+	int c=myrand(n-1)+1, x=myrand(n-2)+2, y=x;
+	int d=1; while(d==1) {
+		x=mul(x,x,n)+c; if(x>=n) x-=n;
+		y=mul(y,y,n)+c; if(y>=n) y-=n;
+		y=mul(y,y,n)+c; if(y>=n) y-=n;
+		d=__gcd(abs(x-y),n);
+		if(d==n) return (ispmiller(n) ? n:pollardrho(n));
+	}
+	return d;
+}
+
+#undef int
+int main() {
     ios::sync_with_stdio(false);
 #ifndef ONLINE_JUDGE
     freopen("in", "r", stdin);
     freopen("out", "w", stdout);
 #endif // ONLINE_JUDGE
-    ll tt = 1;
-    // cin >> tt;
-    ll cs = 1;
-    while (tt--)
-        solve(cs++);
+#define int long long
+
+    int n; cin >> n;
+    if(ispmiller(n)) {
+    	cout << n << '\n'; // input n is prime, output as it is
+    	return 0;
+    }
+
+    vector<int> factors; // holds the prime factorisation of input n
+
+    sieve(1e6);
+    for(int i=1; i<=np and prime[i]*prime[i]<=n; i++) {
+    	if(n%prime[i]==0) { // n is divisible by prime[i] (<= 1e6)
+    		while(n%prime[i]==0) {
+    			n /= prime[i];
+    			factors.push_back(prime[i]);
+    		}
+    	}
+    }
+
+    if(ispmiller(n)) {
+    	factors.push_back(n);
+    }
+    else if(n>1) { // n still has some prime factors > 1e6
+    	int x = pollardrho(n);
+    	assert(x > 1e6);
+    	factors.push_back(x);
+    	factors.push_back(n/x);
+    }
+
+    // Print the factorisation
+    for(int i=0; i<(int)factors.size()-1; i++) cout << factors[i] << '*';
+	cout << (factors.empty() ? 1 : factors.back()) << '\n';
     return 0;
 }

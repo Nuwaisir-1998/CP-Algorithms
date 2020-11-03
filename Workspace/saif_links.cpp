@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
+ 
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/numeric>
-#include<windows.h>
  
 using namespace std;
 using namespace __gnu_pbds;
@@ -55,37 +55,64 @@ unordered_map<ll, ll, custom_hash> safe_map;
 gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
-void solve(ll cs){
-    ll n, i, j, m, k;
-    cin >> n;
-    vt<ll> v(n);
-    for(i=0;i<n;i++){
-        cin >> v[i];
-    }
-    ll sum = 0;
-    for(i=1;i<n;i++){
-        if(v[i] - v[i-1] < 0){
-            sum += (v[i-1] - v[i]);
+
+ll lis(vector<ll> const& a) {
+    ll n = a.size();
+    // const int INF = 1e9;
+    vector<ll> d(n+1, INF);
+    d[0] = -INF;
+
+    for (ll i = 0; i < n; i++) {
+        for (ll j = 1; j <= n; j++) {
+            if (d[j-1] < a[i] && a[i] < d[j])
+                d[j] = a[i];
         }
     }
-    if(sum <= v[0]){
-        cout << "YES\n";
-    }else cout << "NO\n";
+
+    ll ans = 0;
+    for (ll i = 0; i <= n; i++) {
+        if (d[i] < INF)
+            ans = i;
+    }
+    return ans;
+}
+
+void solve(ll cs){
+    ll n, i, j, k, x;
+    string pref = "https://google.com/search?q=";
+    string s;
+    string up = "<html><head><title>Saif The Bhuiyan's links</title></head><body><marquee><h1>Saif The Bhuiyan's links</h1></marquee>";
+    string down = "</body></html>";
+    cout << up << endl;
+    string previous_word = "best";
+    string later_word = "review";
+    while(getline(cin, s)){
+        // cout << "<a href=\"" << pref + previous_word + " " + s + " " + "review" << "\"" << "target=\"_blank\">" << previous_word + " " << s << " " <<  "review </a>" << endl;
+        // cout << "<br>";
+        cout << "<a href=\"" << pref + previous_word + " " + s << "\"" << "target=\"_blank\">" << previous_word + " " << s << "</a>" << endl;
+        cout << "<br>";
+        // cout << "<a href=\"" << pref + s + " " + later_word << "\"" << "target=\"_blank\">" << s << " review </a>" << endl;
+        // cout << "<br>";
+    }
+
+    cout << down << endl;
     
+
 }
 
 int main()
 {
     ios::sync_with_stdio(false);
 #ifndef ONLINE_JUDGE
-    freopen("in", "r", stdin);
-    freopen("out", "w", stdout);
+    freopen("in.txt", "r", stdin);
+    freopen("out.html", "w", stdout);
 #endif // ONLINE_JUDGE
-    // sieve(1000000);
+
     ll tt = 1;
-    cin >> tt;
+    // cin >> tt;
     ll cs = 1;
     while (tt--)
         solve(cs++);
+    
     return 0;
 }

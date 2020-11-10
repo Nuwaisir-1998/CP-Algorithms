@@ -56,21 +56,27 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 void solve(ll cs){
-    ll n, i, j, m, k;
-    cin >> n;
-    vt<ll> v(n);
+    ll n, i, j, k;
+    cin >> n >> k;
+    vector<ll> v(n);
+    vector<ll> cum(n+1, 0);
     for(i=0;i<n;i++){
         cin >> v[i];
-    }
-    ll sum = 0;
-    for(i=1;i<n;i++){
-        if(v[i] - v[i-1] < 0){
-            sum += (v[i-1] - v[i]);
+        if(i == 0) cum[i+1] = v[i];
+        else{
+            cum[i+1] = cum[i] + v[i];
         }
     }
-    if(sum <= v[0]){
-        cout << "YES\n";
-    }else cout << "NO\n";
+    // printv(cum);
+    ll mn = INF;
+    ll idx;
+    for(i=k;i<=n;i++){
+        if(cum[i] - cum[i-k] < mn){
+            mn = cum[i] - cum[i-k];
+            idx = i-k+1;
+        }
+    }
+    cout << idx << endl;
     
 }
 
@@ -83,7 +89,7 @@ int main()
 #endif // ONLINE_JUDGE
     // sieve(1000000);
     ll tt = 1;
-    cin >> tt;
+    // cin >> tt;
     ll cs = 1;
     while (tt--)
         solve(cs++);

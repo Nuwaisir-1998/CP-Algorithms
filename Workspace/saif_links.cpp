@@ -18,7 +18,7 @@ void solve(ll cs){
     while(getline(cin, s)){
         // cout << "<a href=\"" << pref + previous_word + " " + s + " " + "review" << "\"" << "target=\"_blank\">" << previous_word + " " << s << " " <<  "review </a>" << endl;
         // cout << "<br>";
-        cout << "<a href=\"" << pref + previous_word + " " + s << "\"" << "target=\"_blank\">" << previous_word + s + later_word << "</a>" << endl;
+        cout << "<a href=\"" << pref + previous_word + " " + s << "\"" << "target=\"_blank\">" << previous_word + " " + s + " " + later_word << "</a>" << endl;
         cout << "<br>";
         // cout << "<a href=\"" << pref + s + " " + later_word << "\"" << "target=\"_blank\">" << s << " review </a>" << endl;
         // cout << "<br>";
@@ -28,14 +28,15 @@ void solve(ll cs){
     
 }
 
-int main()
+int main(int argc, char * argv[])
 {
     ios::sync_with_stdio(false);
 #ifndef ONLINE_JUDGE
     freopen("in.txt", "r", stdin);
     freopen("out.html", "w", stdout);
 #endif // ONLINE_JUDGE
-
+    if(argc >= 2) PREVIOUS_TEXT = argv[1];
+    if(argc >= 3) FINISHING_TEXT = argv[2];
     ll tt = 1;
     // cin >> tt;
     ll cs = 1;

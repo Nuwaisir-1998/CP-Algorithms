@@ -57,43 +57,100 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 
-// Problem Link: https://www.techgig.com/practice/question/flood-fill/RU8yenBxc3JmMktISVNyOWVsRGdOajloL1RidUJJV2lXUDJWWlVtUzZudk8yVGh1WHJxY1Vwb3pDMGVXNnhidw==/1
+struct matrix{
+    vector<vector<ll>> mat;
+    ll n = 0, m = 0;
 
-/********************************************************************/
-
-vt<string> v(21);
-ll n, m;
-ll start_x, start_y, end_x, end_y;
-
-ll dx[] = {0, -1, 1, 0};
-ll dy[] = {1, 0, 0, -1};
-
-bool flood_fill(ll r, ll c, char c1, char c2){
-    if(r < 0 or r >= n or c < 0 or c >= m) return false;
-    if(v[r][c] != c1) return false;
-    if(r == end_x and c == end_y) return true;
-    v[r][c] = c2;
-    bool ans = false;
-    for(ll i=0;i<4;i++){
-        ans |= flood_fill(r + dx[i], c + dy[i], c1, c2);
+    matrix(ll n, ll m, ll init_val){  // constructs an n x m matrix with all values = val
+        vector<vector<ll>> v(n, vector<ll>(m, init_val));
+        init(v);
     }
-    return ans;
+
+    matrix(vector<vector<ll>> mat){
+        init(mat);
+    }
+
+    void init(vector<vector<ll>> v){
+        this -> mat = v;
+        n = mat.size();
+        if(n) m = mat[0].size();
+    }
+    
+    void print(){
+        // cout << n << " " << m << endl;
+        for(ll i=0;i<n;i++){
+            for(ll j=0;j<m;j++){
+                cout << mat[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
+
+matrix identity_matrix(ll n){
+    vector<vector<ll>> v(n, vector<ll> (n));
+    for(ll i=0;i<n;i++){
+        for(ll j=0;j<n;j++){
+            v[i][j] = 0;
+            if(i == j) v[i][j] = 1;
+        }
+    }
+    matrix mat(v);
+    return mat;
+}
+
+matrix mat_mul(matrix a, matrix b, ll mod){
+    assert(a.m == b.n);
+    matrix res(a.n, b.m, 0);
+    for(ll i=0;i<res.n;i++){
+        for(ll j=0;j<res.m;j++){
+            ll sum = 0;
+            for(ll k=0;k<a.m;k++){
+                sum = (sum + ((a.mat[i][k] % mod) * (b.mat[k][j] % mod)) % mod) % mod;
+            }
+            res.mat[i][j] = sum;
+        }
+    }
+    return res;
+}    
+
+matrix matrix_expo ( matrix a, ll p, ll m )
+{
+    matrix res = identity_matrix(a.n);
+    matrix x = a;
+    while (p)
+    {
+        if (p & 1) //p is odd
+        {
+            res = mat_mul(res, x, m);
+        }
+        x = mat_mul(x, x, m);
+        p = p >> 1;
+    }
+    return res;
 }
 
 void solve(ll cs){
-    ll k, i, j, l;
-    v.clear();
-    v.resize(21);
-    cin >> n >> m;
-    cin >> start_x >> start_y >> end_x >> end_y;
-    for(i=0;i<n;i++){
-        for(j=0;j<m;j++){
-            char ch;
-            cin >> ch;
-            v[i].push_back(ch);
+    ll m, n, k, tt, i, j, l;
+
+    // cin >> tt;
+    while(cin >> n >> m){
+        ll mod = 1;
+        for(i=0;i<m;i++){
+            mod *= 2;
+        }
+
+        matrix mat(2, 2, 1);
+        mat.mat[1][1] = 0;
+
+        if (n < 2) {
+            if (n == 0) cout << 0 << endl;
+            if (n == 1) cout << 1 % mod << endl;
+        } else {
+            mat = matrix_expo(mat, n-1, mod);
+            cout << mat.mat[0][0] << endl;
         }
     }
-    (flood_fill(start_x, start_y, '.', '#')) ? cout << "YES\n" : cout <<"NO\n";
 }
 
 int main()
@@ -104,7 +161,7 @@ int main()
     freopen("out", "w", stdout);
 #endif // ONLINE_JUDGE
     ll tt = 1;
-    cin >> tt;
+    // cin >> tt;
     ll cs = 1;
     while (tt--)
         solve(cs++);

@@ -2,19 +2,19 @@
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/numeric>
-
+ 
 using namespace std;
 using namespace __gnu_pbds;
 using namespace __gnu_cxx;
-
+ 
 #define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
-
+ 
 typedef long long ll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 typedef pair<ll, ll> pll;
 typedef vector<pll> vpll;
-
+ 
 #define all(x) (x).begin(), (x).end()
 #define MOD 1000000007
 #define MOD9 998244353
@@ -28,7 +28,7 @@ typedef vector<pll> vpll;
 #define ss second
 #define vt vector
 #define FOR(n) for(i=0;i<n;i++)
-
+ 
 template <typename T>
 void printv(vector<T> &v){for (auto e : v) cout << e << ' ';cout << '\n';}
 template <typename T>
@@ -45,15 +45,19 @@ struct custom_hash {
         x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
         return x ^ (x >> 31);
     }
-
+ 
     size_t operator()(uint64_t x) const {
         static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
         return splitmix64(x + FIXED_RANDOM);
     }
 };
-
+ 
 unordered_map<ll, ll, custom_hash> safe_map;
 gp_hash_table<ll, ll, custom_hash> safe_hash_table;
+
+/********************************************************************/
+
+//              Problem link: https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1170
 
 /********************************************************************/
 
@@ -75,7 +79,7 @@ struct matrix{
         n = mat.size();
         if(n) m = mat[0].size();
     }
-
+    
     void print(){
         // cout << n << " " << m << endl;
         for(ll i=0;i<n;i++){
@@ -106,17 +110,17 @@ matrix mat_mul(matrix a, matrix b, ll mod){
         for(ll j=0;j<res.m;j++){
             ll sum = 0;
             for(ll k=0;k<a.m;k++){
-                sum += (a.mat[i][k] * b.mat[k][j]) % mod;
+                sum = (sum + ((a.mat[i][k] % mod) * (b.mat[k][j] % mod)) % mod) % mod;
             }
             res.mat[i][j] = sum;
         }
     }
     return res;
-}
+}    
 
-matrix bigmod ( matrix a, ll p, ll m )
+matrix matrix_expo ( matrix a, ll p, ll m )
 {
-    matrix res(a.n, a.m, 0);
+    matrix res = identity_matrix(a.n);
     matrix x = a;
     while (p)
     {
@@ -131,27 +135,25 @@ matrix bigmod ( matrix a, ll p, ll m )
 }
 
 void solve(ll cs){
-    ll n, k, i, j, l;
-    // matrix m1(2,2,1);
-    // matrix m2(2,2,2);
-    // matrix res = bigmod(m2, 2, MOD);
-    // res.print();
-    matrix mat(2,2,1);
-    mat.mat[1][1] = 0;
-    bigmod(mat, 2, MOD);
-    cin >> n;
-    if (n < 3) {
-        if (n == 0) cout << 0 << endl;
-        if (n == 1) cout << 1 << endl;
-        if (n == 2) cout << 1 << endl;
-    } else {
-        // matrix res = mat_mul(mat, mat, MOD);
-        // res.print();
-        mat = bigmod(mat, 2, MOD);
-        mat.print();
-        //   int ans = mat.mat[0][0] + mat.mat[0][1];
-        // //   ans %= mod;
-        //   cout << ans << endl;
+    ll m, n, k, tt, i, j, l;
+
+    // cin >> tt;
+    while(cin >> n >> m){
+        ll mod = 1;
+        for(i=0;i<m;i++){
+            mod *= 2;
+        }
+
+        matrix mat(2, 2, 1);
+        mat.mat[1][1] = 0;
+
+        if (n < 2) {
+            if (n == 0) cout << 0 << endl;
+            if (n == 1) cout << 1 % mod << endl;
+        } else {
+            mat = matrix_expo(mat, n-1, mod);
+            cout << mat.mat[0][0] << endl;
+        }
     }
 }
 
@@ -159,8 +161,8 @@ int main()
 {
     ios::sync_with_stdio(false);
 #ifndef ONLINE_JUDGE
-    freopen("../in", "r", stdin);
-    freopen("../out", "w", stdout);
+    freopen("in", "r", stdin);
+    freopen("out", "w", stdout);
 #endif // ONLINE_JUDGE
     ll tt = 1;
     // cin >> tt;

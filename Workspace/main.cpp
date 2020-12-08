@@ -29,10 +29,15 @@ typedef vector<pll> vpll;
 #define vt vector
 #define FOR(n) for(i=0;i<n;i++)
  
+
+template <typename T>
+void printv(vector<T> &v, ll add){for (auto e : v) cout << e + add << ' ';cout << '\n';}
 template <typename T>
 void printv(vector<T> &v){for (auto e : v) cout << e << ' ';cout << '\n';}
 template <typename T>
 void printst(set<T> &v){for (auto e : v) cout << e << ' ';cout << '\n';}
+template <typename T>
+void printst(set<T> &v, ll add){for (auto e : v) cout << e + add << ' ';cout << '\n';}
 template <typename T>
 void dbg(T x) {cerr << "x is " << x << '\n';}
 
@@ -57,99 +62,55 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 
-struct matrix{
-    vector<vector<ll>> mat;
-    ll n = 0, m = 0;
+vector<ll> adj[105];
+vector<bool> vis(105, false);
+vector<ll> tps;
 
-    matrix(ll n, ll m, ll init_val){  // constructs an n x m matrix with all values = val
-        vector<vector<ll>> v(n, vector<ll>(m, init_val));
-        init(v);
-    }
 
-    matrix(vector<vector<ll>> mat){
-        init(mat);
-    }
-
-    void init(vector<vector<ll>> v){
-        this -> mat = v;
-        n = mat.size();
-        if(n) m = mat[0].size();
-    }
-    
-    void print(){
-        // cout << n << " " << m << endl;
-        for(ll i=0;i<n;i++){
-            for(ll j=0;j<m;j++){
-                cout << mat[i][j] << " ";
-            }
-            cout << endl;
+void dfs(ll s){
+    vis[s] = true;
+    for(auto ele : adj[s]){
+        if(!vis[ele]){
+            dfs(ele);
         }
     }
-};
-
-matrix identity_matrix(ll n){
-    vector<vector<ll>> v(n, vector<ll> (n));
-    for(ll i=0;i<n;i++){
-        for(ll j=0;j<n;j++){
-            v[i][j] = 0;
-            if(i == j) v[i][j] = 1;
-        }
-    }
-    matrix mat(v);
-    return mat;
+    tps.push_back(s);
 }
 
-matrix mat_mul(matrix a, matrix b, ll mod){
-    assert(a.m == b.n);
-    matrix res(a.n, b.m, 0);
-    for(ll i=0;i<res.n;i++){
-        for(ll j=0;j<res.m;j++){
-            ll sum = 0;
-            for(ll k=0;k<a.m;k++){
-                sum = (sum + ((a.mat[i][k] % mod) * (b.mat[k][j] % mod)) % mod) % mod;
-            }
-            res.mat[i][j] = sum;
-        }
-    }
-    return res;
-}    
-
-matrix matrix_expo ( matrix a, ll p, ll m )
-{
-    matrix res = identity_matrix(a.n);
-    matrix x = a;
-    while (p)
-    {
-        if (p & 1) //p is odd
-        {
-            res = mat_mul(res, x, m);
-        }
-        x = mat_mul(x, x, m);
-        p = p >> 1;
-    }
-    return res;
-}
+// void dfs(ll n){
+//     for(ll i=0;i<n;i++){
+//         if(!vis[i]){
+//             dfs_vis(i);
+//         }
+//     }
+// }
 
 void solve(ll cs){
-    ll m, n, k, tt, i, j, l;
-
+    ll m, n, k, tt, i, j, l, x, y;
     // cin >> tt;
-    while(cin >> n >> m){
-        ll mod = 1;
+    while(true){
+        cin >> n >> m;
+        if(n == 0){
+            return;
+        }
+        set<ll> sources;
+        tps.clear();
+        for(i=0;i<n;i++) {
+            adj[i].clear();
+            vis[i] = false;
+            sources.insert(i);
+        }
         for(i=0;i<m;i++){
-            mod *= 2;
+            cin >> x >> y;
+            x--, y--;
+            adj[x].push_back(y);
+            sources.erase(y);
         }
-
-        matrix mat(2, 2, 1);
-        mat.mat[1][1] = 0;
-
-        if (n < 2) {
-            if (n == 0) cout << 0 << endl;
-            if (n == 1) cout << 1 % mod << endl;
-        } else {
-            mat = matrix_expo(mat, n-1, mod);
-            cout << mat.mat[0][0] << endl;
-        }
+        // printst(sources, 1);
+        for(auto ele : sources)
+            dfs(ele);
+        reverse(all(tps));
+        printv(tps, 1);
     }
 }
 

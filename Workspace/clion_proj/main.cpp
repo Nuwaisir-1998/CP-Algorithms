@@ -30,9 +30,13 @@ typedef vector<pll> vpll;
 #define FOR(n) for(i=0;i<n;i++)
 
 template <typename T>
+void printv(vector<T> &v, ll add){for (auto e : v) cout << e + add << ' ';cout << '\n';}
+template <typename T>
 void printv(vector<T> &v){for (auto e : v) cout << e << ' ';cout << '\n';}
 template <typename T>
 void printst(set<T> &v){for (auto e : v) cout << e << ' ';cout << '\n';}
+template <typename T>
+void printst(set<T> &v, ll add){for (auto e : v) cout << e + add << ' ';cout << '\n';}
 template <typename T>
 void dbg(T x) {cerr << "x is " << x << '\n';}
 
@@ -55,103 +59,83 @@ struct custom_hash {
 unordered_map<ll, ll, custom_hash> safe_map;
 gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
+#define MXS 10005
+
 /********************************************************************/
 
-struct matrix{
-    vector<vector<ll>> mat;
-    ll n = 0, m = 0;
+vector<vector<ll>> adj(MXS);
+vector<bool> vis(MXS), tin(MXS), low(MXS);
+vector<ll> articulation_points;
+vector<pll> articulation_bridges;
+ll timer;
 
-    matrix(ll n, ll m, ll init_val){  // constructs an n x m matrix with all values = val
-        vector<vector<ll>> v(n, vector<ll>(m, init_val));
-        init(v);
-    }
-
-    matrix(vector<vector<ll>> mat){
-        init(mat);
-    }
-
-    void init(vector<vector<ll>> v){
-        this -> mat = v;
-        n = mat.size();
-        if(n) m = mat[0].size();
-    }
-
-    void print(){
-        // cout << n << " " << m << endl;
-        for(ll i=0;i<n;i++){
-            for(ll j=0;j<m;j++){
-                cout << mat[i][j] << " ";
+void dfs(ll u, ll par = -1){
+    vis[u] = true;
+    tin[u] = timer;
+    low[u] = timer;
+    timer++;
+    // cout << timer << endl;
+    ll child_count = 0;
+    for(auto v : adj[u]){
+        if(v == par) continue;
+        if(!vis[v]){
+            dfs(v, u);
+            low[u] = min(low[u], low[v]);
+            if(low[v] >= tin[u] and par != -1){
+                articulation_points.push_back(u);
             }
-            cout << endl;
-        }
-    }
-};
-
-matrix identity_matrix(ll n){
-    vector<vector<ll>> v(n, vector<ll> (n));
-    for(ll i=0;i<n;i++){
-        for(ll j=0;j<n;j++){
-            v[i][j] = 0;
-            if(i == j) v[i][j] = 1;
-        }
-    }
-    matrix mat(v);
-    return mat;
-}
-
-matrix mat_mul(matrix a, matrix b, ll mod){
-    assert(a.m == b.n);
-    matrix res(a.n, b.m, 0);
-    for(ll i=0;i<res.n;i++){
-        for(ll j=0;j<res.m;j++){
-            ll sum = 0;
-            for(ll k=0;k<a.m;k++){
-                sum += (a.mat[i][k] * b.mat[k][j]) % mod;
+            if(low[v] > tin[u]){
+                articulation_bridges.push_back({u, v});
             }
-            res.mat[i][j] = sum;
+            child_count++;
+        }else{
+            low[u] = min(low[u], tin[v]);
         }
     }
-    return res;
+    if(par == -1 and child_count > 1){
+        articulation_points.push_back(u);
+    }
 }
 
-matrix bigmod ( matrix a, ll p, ll m )
-{
-    matrix res(a.n, a.m, 0);
-    matrix x = a;
-    while (p)
-    {
-        if (p & 1) //p is odd
-        {
-            res = mat_mul(res, x, m);
+void find_articulation_points_and_bridges(){
+    timer = 0;
+    articulation_points.clear();
+    articulation_bridges.clear();
+    vis.assign(MXS, false);
+    tin.assign(MXS, -1);
+    low.assign(MXS, -1);
+    for(ll i=0;i<MXS;i++){
+        if(!vis[i]){
+            dfs(i);
         }
-        x = mat_mul(x, x, m);
-        p = p >> 1;
     }
-    return res;
 }
+
 
 void solve(ll cs){
-    ll n, k, i, j, l;
-    // matrix m1(2,2,1);
-    // matrix m2(2,2,2);
-    // matrix res = bigmod(m2, 2, MOD);
-    // res.print();
-    matrix mat(2,2,1);
-    mat.mat[1][1] = 0;
-    bigmod(mat, 2, MOD);
-    cin >> n;
-    if (n < 3) {
-        if (n == 0) cout << 0 << endl;
-        if (n == 1) cout << 1 << endl;
-        if (n == 2) cout << 1 << endl;
-    } else {
-        // matrix res = mat_mul(mat, mat, MOD);
-        // res.print();
-        mat = bigmod(mat, 2, MOD);
-        mat.print();
-        //   int ans = mat.mat[0][0] + mat.mat[0][1];
-        // //   ans %= mod;
-        //   cout << ans << endl;
+    ll m, n, k, tt, i, j, l, x, y;
+    while(true){
+        cin >> n >> m;
+        if(n == 0){
+            return;
+        }
+        adj.clear();
+        adj.resize(n+3);
+        for(i=0;i<m;i++){
+            cin >> x >> y;
+            x--, y--;
+            adj[x].push_back(y);
+            adj[y].push_back(x);
+        }
+        // for(i=0;i<n;i++){
+        //     cout << i << ": ";
+        //     printv(adj[i]);
+        // }
+        find_articulation_points_and_bridges();
+        for(i=0;i<n;i++) {
+            cout << low[i] << " " << tin[i] << endl;
+        }
+        cout << articulation_points.size() << endl;
     }
 }
 

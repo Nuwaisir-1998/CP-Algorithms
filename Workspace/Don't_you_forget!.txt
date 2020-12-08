@@ -6,3 +6,4 @@
 7. IMO most people don't try enough examples / small cases when solving problems. It takes time but is really important (samples often hide the true idea, and sometimes the pattern isn't obvious for N=2,3 and only becomes clear with higher N). - Scott Wu
 8. bad_alloc occurs maybe sometime for redeclearing a variable.
 9. Think about all diagonals in a tic tac toe like problem.
+10. Check the types of the declared variables if you can't find any error.

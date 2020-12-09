@@ -67,7 +67,7 @@ struct item {
 
 struct segTree {
 /**      (l, r) is the main segment      **/
-/**      sum(l, r) => sum of [l, r), notice that, r is not included in the segment **/
+/**      sum(l, r) => sum of the values of the range [l, r] **/
     ll size;
 
     vector<item> mins_freq;

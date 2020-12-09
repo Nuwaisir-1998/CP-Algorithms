@@ -28,7 +28,6 @@ typedef vector<pll> vpll;
 #define ss second
 #define vt vector
 #define FOR(n) for(i=0;i<n;i++)
- 
 
 template <typename T>
 void printv(vector<T> &v, ll add){for (auto e : v) cout << e + add << ' ';cout << '\n';}
@@ -60,7 +59,9 @@ struct custom_hash {
 unordered_map<ll, ll, custom_hash> safe_map;
 gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
+#define MXS 300005
 
+/********************************************************************/
 
 void solve(){
     ll n, m;

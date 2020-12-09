@@ -4,7 +4,7 @@ typedef long long ll;
 typedef vector<ll> vll;
 
 class segmentTree{              // Segment tree for range minimum query
-    vll st, A;                   // st is the array for binary tree. Index 1 is the root
+    vll st, A;                  // st is the array for binary tree. Index 1 is the root
     ll n;
     ll left(ll p){ return 2*p; }
     ll right(ll p){ return 2*p + 1; }

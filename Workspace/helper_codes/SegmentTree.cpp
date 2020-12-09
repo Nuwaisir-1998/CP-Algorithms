@@ -52,7 +52,7 @@ public:
         st.assign(4*n, 0);
         build(1, 0, n-1);
     }
-    ll RMQ(ll i, ll j){     // returns minimum value form i to j inclusive
+    ll RMQ(ll i, ll j){     // returns index of the minimum value from i to j inclusive
         return RMQ(1, 0, n-1, i, j);
     }
     void update(ll i, ll val){

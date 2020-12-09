@@ -120,7 +120,7 @@ void solve(ll cs){
     for(i=0;i<m;i++){
         cin >> x >> y;
         x--, y--;
-        adj[x].push_back(y);
+        adj[x].push_back(y);        // ATTENTION: We are considering directed graphs
     }
     find_sccs(n);
     // cout << scc_cnt << endl;

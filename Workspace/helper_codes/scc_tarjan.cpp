@@ -97,7 +97,7 @@ void tarjan_scc(ll u){
     }
 }
 
-void find_sccs(ll n){ // 0 indexed
+void find_sccs(ll n){ // 0 indexed, n = number of vertices, (from 0 -> n-1)
     timer = 0;
     scc_cnt = 0;
     scc.clear();

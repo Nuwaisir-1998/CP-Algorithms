@@ -1,6 +1,6 @@
 /*********************************************************************************************/
-//                            SEGMENT TREE FOR RANGE MINIMUM QUERY
-//                  mins(l, r) => returns the minimum value of [l, r] (inclusive)
+//                               SEGMENT TREE FOR NUMBER OF MINIMUMS IN A RANGE QUERY
+//                  rmq(l, r) => returns the (minimum value, frequency of the min value in [l, r] (inclusive)) pair
 //                  set(i, val) => sets the value of the ith index to val
 //
 /*********************************************************************************************/
@@ -60,33 +60,62 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 
+//   Problem link: https://codeforces.com/edu/course/2/lesson/4/2
+
+/********************************************************************/
+
+// seg -> max segment sum
+// pref -> max pref sum
+// suf -> max suf sum
+// sum -> just the sum
+struct item {
+    ll seg, pref, suf, sum;
+};
+
 struct segTree {
 /**      (l, r) is the main segment      **/
-/**      sum(l, r) => sum of [l, r), notice that, r is not included in the segment **/
+/**      sum(l, r) => sum of the values of the range [l, r] **/
     ll size;
-    vector<ll> mins;
+
+    vector<item> values;
 
     segTree(ll n){
         init(n);
     }
 
+    item NEUTRAL_ELEMENT = {0, 0, 0, 0};
+
+    item merge(item a, item b){
+        return {
+            max({a.seg, b.seg, a.suf + b.pref}),
+            max(a.pref, a.sum + b.pref),
+            max(b.suf, b.sum + a.suf),
+            a.sum + b.sum
+        };
+    }
+
+    item single(ll v){
+        if(v < 0) return {0, 0, 0, v};
+        return {v, v, v, v};
+    }
+
     void init(ll n){
         size = 1;
         while(size < n) size *= 2;
-        mins.assign(2 * size, 0LL);
+        values.resize(2 * size);
     }
 
     void build(vector<ll> & a, ll x, ll lx, ll rx){
         if(rx == lx){
             if(lx < (ll)a.size()){ // checking this as we added some extra 0s to the main array
-                mins[x] = a[lx];
+                values[x] = single(a[lx]);
             }
             return;
         }
         ll m = (lx + rx) / 2;
         build(a, 2 * x + 1, lx, m);
         build(a, 2 * x + 2, m+1, rx);
-        mins[x] = min(mins[2 * x + 1], mins[2 * x + 2]);    /** changable **/
+        values[x] = merge(values[2 * x + 1], values[2 * x + 2]);    /** changable **/
     }
 
     void build(vector<ll> & a){
@@ -95,7 +124,7 @@ struct segTree {
 
     void set(ll i, ll v, ll x, ll lx, ll rx){
         if(rx == lx) {
-            mins[x] = v;
+            values[x] = single(v);
             return;
         }
         ll m = (lx + rx) / 2;
@@ -104,24 +133,24 @@ struct segTree {
         }else{
             set(i, v, 2 * x + 2, m+1,  rx);
         }
-        mins[x] = min(mins[2 * x + 1], mins[2 * x + 2]);    /** changable **/
+        values[x] = merge(values[2 * x + 1], values[2 * x + 2]);    /** changable **/
     }
 
     void set(ll i, ll v){
         set(i, v, 0, 0, size-1);
     }
 
-    ll rmq(ll l, ll r, ll x, ll lx, ll rx){
-        if(lx > r or l > rx) return INF;                /** changable **/
-        if(lx >= l and rx <= r) return mins[x];
+    item calc(ll l, ll r, ll x, ll lx, ll rx){
+        if(lx > r or l > rx) return NEUTRAL_ELEMENT;                /** changable **/
+        if(lx >= l and rx <= r) return values[x];
         ll m = (lx + rx) / 2;
-        ll s1 = rmq(l, r, 2 * x + 1, lx, m);
-        ll s2 = rmq(l, r, 2 * x + 2, m+1, rx);
-        return min(s1, s2);                                 /** changable **/
+        item s1 = calc(l, r, 2 * x + 1, lx, m);
+        item s2 = calc(l, r, 2 * x + 2, m+1, rx);
+        return merge(s1, s2);                                 /** changable **/
     }
 
-    ll rmq(ll l, ll r){
-        return rmq(l, r, 0, 0, size-1);
+    item calc(ll l, ll r){
+        return calc(l, r, 0, 0, size-1);
     }
 };
 
@@ -134,18 +163,13 @@ void solve(ll cs){
         cin >> a[i];
     }
     st.build(a);
+    cout << st.calc(0, n-1).seg << endl;
     while(m--){
-        ll op;
-        cin >> op;
-        if(op == 1){
-            ll i, v;
-            cin >> i >> v;
-            st.set(i, v);
-        }else{
-            ll l, r;
-            cin >> l >> r;
-            cout << st.rmq(l, r-1) << endl;
-        }
+        ll l, r;
+        cin >> l >> r;
+        st.set(l, r);
+        item ans = st.calc(0, n-1);
+        cout << st.calc(0, n-1).seg << endl;
     }   
 }
 

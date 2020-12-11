@@ -63,32 +63,10 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 
-ll max_subarray_sum(vector<ll> & v) 
-{ 
-    ll max_so_far = LONG_MIN, max_ending_here = 0; 
-    ll n = v.size();
-    for (int i = 0; i<n; i++) 
-    { 
-        max_ending_here = max_ending_here + v[i]; 
-        if (max_so_far < max_ending_here) 
-            max_so_far = max_ending_here; 
-  
-        if (max_ending_here < 0) 
-            max_ending_here = 0;
-    } 
-    return max_so_far; 
-} 
-
-void solve(ll cs){
-    ll m, n, k, tt, i, j, l, x, y;
-    cin >> n;
-    vt<ll> v(n);
-    for(i=0;i<n;i++){
-        cin >> v[i];
-    }
-
-    cout << max_subarray_sum(v) << endl;
-
+void solve(){
+    ll n, m;
+    cin >> n >> m;
+    cout << n << " " << m << "\n";
 }
 
 int main()
@@ -98,10 +76,11 @@ int main()
     freopen("in", "r", stdin);
     freopen("out", "w", stdout);
 #endif // ONLINE_JUDGE
+
     ll tt = 1;
-    // cin >> tt;
-    ll cs = 1;
+    cin >> tt;
     while (tt--)
-        solve(cs++);
+        solve();
+    
     return 0;
 }

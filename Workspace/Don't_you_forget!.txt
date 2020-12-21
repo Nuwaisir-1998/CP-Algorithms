@@ -7,3 +7,6 @@
 8. bad_alloc occurs maybe sometime for redeclearing a variable.
 9. Think about all diagonals in a tic tac toe like problem.
 10. Check the types of the declared variables if you can't find any error.
+11. Don't return before reading input -_- (Maybe a reason for weird TLE).
+12. When declaring vector, do you need to give the size?
+13. Don't do ans += something; when you need to mod. Do ans = (ans + something) % MOD

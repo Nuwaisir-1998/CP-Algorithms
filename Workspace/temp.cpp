@@ -1,13 +1,4 @@
-/*********************************************************************************************/
-//                            SEGMENT TREE FOR RANGE MINIMUM QUERY
-//                  mins(l, r) => returns the minimum value of [l, r] (inclusive)
-//                  set(i, val) => sets the value of the ith index to val
-//
-/*********************************************************************************************/
-
-
 #include <bits/stdc++.h>
- 
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/numeric>
@@ -29,20 +20,30 @@ typedef vector<pll> vpll;
 #define MOD9 998244353
 #define PI acos(-1)
 #define MAXN 200005
-#define INF 1000000000000000000
+#define INF 100000000000000000
 #define nl '\n'
 #define MAX(x) *max_element(all(x))
 #define MIN(x) *min_element(all(x))
- 
+#define ff first
+#define ss second
+#define vt vector
+#define FOR(n) for(i=0;i<n;i++)
+
+template <typename T>
+void printv(vector<T> &v, ll add){for (auto e : v) cout << e + add << ' ';cout << '\n';}
 template <typename T>
 void printv(vector<T> &v){for (auto e : v) cout << e << ' ';cout << '\n';}
+template <typename T>
+void printst(set<T> &v){for (auto e : v) cout << e << ' ';cout << '\n';}
+template <typename T>
+void printst(set<T> &v, ll add){for (auto e : v) cout << e + add << ' ';cout << '\n';}
 template <typename T>
 void dbg(T x) {cerr << "x is " << x << '\n';}
 
 struct custom_hash {
     // to make unordered map safe
     static uint64_t splitmix64(uint64_t x) {
-        // http://xorshift.di.unimi.it/splitmix64.c
+        // http://xor_shift.di.unimi.it/splitmix64.c
         x += 0x9e3779b97f4a7c15;
         x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
         x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
@@ -58,95 +59,112 @@ struct custom_hash {
 unordered_map<ll, ll, custom_hash> safe_map;
 gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
+
 /********************************************************************/
 
-struct segTree {
-/**      (l, r) is the main segment      **/
-/**      sum(l, r) => sum of [l, r), notice that, r is not included in the segment **/
-    ll size;
-    vector<ll> mins;
+set<ll> sums;
 
-    segTree(ll n){
-        init(n);
+ll find_pivot(vt<ll> & v, ll left, ll right){
+    ll mx = -INF;
+    ll mn = INF;
+    for(ll i=left;i<=right;i++){
+        mx = max(mx, v[i]);
+        mn = min(mn, v[i]);
     }
+    return (mx + mn) / 2;
+}
 
-    void init(ll n){
-        size = 1;
-        while(size < n) size *= 2;
-        mins.assign(2 * size, 0LL);
+void check(vt<ll> & v, ll left, ll right){
+    // cout << left << " " << right << endl;
+    // cout << "v: ";printv(v);
+    if(left == right){
+        // cout << v[left] << endl;
+        sums.insert(v[left]);
+        return;
     }
-
-    void build(vector<ll> & a, ll x, ll lx, ll rx){
-        if(rx == lx){
-            if(lx < (ll)a.size()){ // checking this as we added some extra 0s to the main array
-                mins[x] = a[lx];
-            }
-            return;
-        }
-        ll m = (lx + rx) / 2;
-        build(a, 2 * x + 1, lx, m);
-        build(a, 2 * x + 2, m+1, rx);
-        mins[x] = min(mins[2 * x + 1], mins[2 * x + 2]);    /** changable **/
+    ll pivot = find_pivot(v, left, right);
+    // cout << pivot << endl;
+    bool shoman = true;
+    for(ll i=left+1;i<=right;i++){
+        if(v[i] != v[i-1]) shoman = false;
     }
-
-    void build(vector<ll> & a){
-        build(a, 0, 0, size-1);
+    
+    vll new_arr;
+    ll sum = 0;
+    for(ll i=left;i<=right;i++){
+        if(v[i] <= pivot) new_arr.push_back(v[i]);
+        // cout << v[i] << " ";
+        sum += v[i];
     }
+    // cout << endl;
+    ll mid = left + (ll)new_arr.size() - 1;
+    for(ll i=left;i<=right;i++){
+        if(v[i] > pivot) new_arr.push_back(v[i]);
+    }
+    // cout << sum << endl;
+    // cout << "n : ";
+    // printv(new_arr);
+    sums.insert(sum);
+    if(shoman) return;
+    // if(mid == right or left == mid) return;
+    for(ll j=0,i=left;i<=right;i++,j++){
+        v[i] = new_arr[j];
+    }
+    check(v, left, mid);
+    check(v, mid+1, right);
+}
 
-    void set(ll i, ll v, ll x, ll lx, ll rx){
-        if(rx == lx) {
-            mins[x] = v;
-            return;
-        }
-        ll m = (lx + rx) / 2;
-        if(i <= m){
-            set(i, v, 2 * x + 1, lx,  m);
+vector<vector<ll>> nCr(201, vector<ll> (201, 0));
+
+ll combination(ll n, ll r){
+    if(n == r) nCr[n][r] = 1;
+    else if(r == 0) nCr[n][r] = 1;
+    else {
+        if(nCr[n][r] != 0){
+            return nCr[n][r];
         }else{
-            set(i, v, 2 * x + 2, m+1,  rx);
+            nCr[n][r] = combination(n-1, r) + combination(n-1, r-1);
         }
-        mins[x] = min(mins[2 * x + 1], mins[2 * x + 2]);    /** changable **/
     }
+    return nCr[n][r];
+}
 
-    void set(ll i, ll v){
-        set(i, v, 0, 0, size-1);
+
+vt<vt<ll>> LCS(1001, vt<ll> (1001, -1));
+
+vt<ll> v1(1001), v2(1001);
+
+ll compute_LCS(ll p1, ll p2){
+    if(p1 == 0 or p2 == 0){
+        if(v1[p1] == v2[p2]) LCS[p1][p2] = 1;
+        else LCS[p1][p2] = 0;
     }
-
-    ll rmq(ll l, ll r, ll x, ll lx, ll rx){
-        if(lx > r or l > rx) return INF;                /** changable **/
-        if(lx >= l and rx <= r) return mins[x];
-        ll m = (lx + rx) / 2;
-        ll s1 = rmq(l, r, 2 * x + 1, lx, m);
-        ll s2 = rmq(l, r, 2 * x + 2, m+1, rx);
-        return min(s1, s2);                                 /** changable **/
+    if(LCS[p1][p2] != -1) return LCS[p1][p2];
+    if(v1[p1] == v2[p2]){
+        LCS[p1][p2] = compute_LCS(p1-1, p2-1) + 1;
+    }else{
+        LCS[p1][p2] = max(compute_LCS(p1-1, p2), compute_LCS(p1, p2-1));
     }
+    return LCS[p1][p2];
+    
+}
 
-    ll rmq(ll l, ll r){
-        return rmq(l, r, 0, 0, size-1);
-    }
-};
-
-void solve(ll cs){
-    ll n, k, i, j, l, m;
+void solve(){
+    ll i, j, k, a, b, n, m, q;
+    ll  t;
     cin >> n >> m;
-    segTree st(n);
-    vector<ll> a(n);
+    
     for(i=0;i<n;i++){
-        cin >> a[i];
+        cin >> v1[i];
     }
-    st.build(a);
-    while(m--){
-        ll op;
-        cin >> op;
-        if(op == 1){
-            ll i, v;
-            cin >> i >> v;
-            st.set(i, v);
-        }else{
-            ll l, r;
-            cin >> l >> r;
-            cout << st.rmq(l, r-1) << endl;
-        }
-    }   
+    for(i=0;i<m;i++){
+        cin >> v2[i];
+    }
+
+    ll val = compute_LCS(n-1, m-1);
+    cout << val << endl;
+    cout << (n - val) + (m - val) << endl;
+
 }
 
 int main()
@@ -156,11 +174,14 @@ int main()
     freopen("in", "r", stdin);
     freopen("out", "w", stdout);
 #endif // ONLINE_JUDGE
+
     ll tt = 1;
     // cin >> tt;
-    ll cs = 1;
     while (tt--)
-        solve(cs++);
+        solve();
+    // for(int i=0;i<1000;i++){
+    //     cout << 4 << " " << 0.1 << endl;
+    // }
     
     return 0;
 }

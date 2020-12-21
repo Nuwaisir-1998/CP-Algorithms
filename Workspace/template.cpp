@@ -64,7 +64,7 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 /********************************************************************/
 
 void solve(){
-    ll n, m;
+    ll n, m, i, j, k;
     cin >> n >> m;
     cout << n << " " << m << "\n";
 }

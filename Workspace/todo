@@ -1,2 +1,4 @@
 1. rewvise all codes.
 2. maybe change the type of adjList (vector -> set)
+4. add nCr
+5. add LCS (subseq)

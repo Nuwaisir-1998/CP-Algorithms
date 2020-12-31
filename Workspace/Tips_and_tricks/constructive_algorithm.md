@@ -8,3 +8,13 @@ try2 : 0101
 Then calculate the effect and see whether you can come up with a solution. 
 (A solution can be: try all possible 0-prefixed replacements e.g. 000...111)
 Problem: https://codeforces.com/contest/1465/problem/D
+
+2.
+When you are asked to count the number of substrings or something like that by maybe replacing some of the elements, but they don't want the changed substring (they just want the count), then consider replacing with a not a certain element (maybe '?'), if you are sure that there exists some element
+which will satisfie the requirements.
+Problem: https://codeforces.com/contest/1466/problem/C
+
+3. (probably true)
+When dealing with a sliding window, and replacing and element of that window, if the size of that
+sliding window is very small, (maybe 2-3), then you try all possible replacements and just see how does that effect the other sliding windows that contain the replaced element. So, maybe you can choose an element greedily in this case. Not sure whether it will work on all cases.
+Problem: https://codeforces.com/contest/1466/problem/C

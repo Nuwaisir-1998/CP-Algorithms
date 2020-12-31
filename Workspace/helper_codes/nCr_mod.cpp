@@ -59,40 +59,37 @@ struct custom_hash {
 unordered_map<ll, ll, custom_hash> safe_map;
 gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
-#define MXS 500005
+#define MXS 100005
 
 /********************************************************************/
 
-vt<vt<ll>> adj(MXS);
-
-
-void solve(){
-    ll n, m, x, y, i, j, k, b, q;
-    cin >> n;
-    vt<ll> v(n);
-    for(i=0;i<n;i++){
-        cin >> v[i];
-    }
-    ll sum = 0;
-    map<ll, ll> mp;
-    for(i=0;i<n;i++){
-        for(j=0;j<n;j++){
-            for(k=0;k<n;k++){
-                cout << v[i] << " " << v[j] << " " << v[k] << " -> ";
-                ll val = (v[i] & v[j]) * (v[j] | v[k]);
-                mp[val]++;
-                cout << val << endl;
-                sum += (v[i] & v[j]) * (v[j] | v[k]);
-            }
+ll bigmod ( ll a, ll p, ll m )
+{
+    ll res = 1;
+    ll x = a;
+    while (p)
+    {
+        if (p & 1) //p is odd
+        {
+            res = (res * x) % m;
         }
-    }    
-
-    for(auto ele : mp){
-        cout << ele.ff << " - " << ele.ss << endl;
+        x = (x * x) % m;
+        p = p >> 1;
     }
-    cout << sum << endl;
+    return res;
+}
+vt<ll> fact(200005, 1), inv(200005, 1);
+
+ll mod_mul(ll a, ll b){
+    return ((a % MOD) * (b % MOD)) % MOD;
 }
 
+void solve(){
+    ll n, m, i, j, k, b, q;
+    cin >> n >> k;
+    cout << mod_mul(fact[n], inv[k] * inv[n - k] << endl;
+
+}
 
 int main()
 {
@@ -101,6 +98,13 @@ int main()
     freopen("in", "r", stdin);
     freopen("out", "w", stdout);
 #endif // ONLINE_JUDGE
+
+    
+    for(ll i=1;i<200005;i++) fact[i] = (fact[i-1] * i) % MOD;
+    for(ll i=1;i<200005;i++) inv[i] = (inv[i-1] * bigmod(i, MOD-2, MOD)) % MOD;
+    // for(ll i=0;i<10;i++){
+    //     cout << fact[i] << " " << inv[i] << endl;
+    // }
     ll tt = 1;
     cin >> tt;
     while (tt--)

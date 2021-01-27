@@ -7,13 +7,13 @@ using namespace std;
 using namespace __gnu_pbds;
 using namespace __gnu_cxx;
  
-#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
- 
 typedef long long ll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 typedef pair<ll, ll> pll;
 typedef vector<pll> vpll;
+
+#define ordered_set tree<ll, null_type,less<ll>, rb_tree_tag,tree_order_statistics_node_update>
  
 #define all(x) (x).begin(), (x).end()
 #define MOD 1000000007

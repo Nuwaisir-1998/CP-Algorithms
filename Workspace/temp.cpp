@@ -1,34 +1,38 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-typedef long long ll;
-
-int N;
-string S;
-
-void gogo()
-{
-    cin >> S;
-    N = S.length();
-
-    int ans = 0;
-    for (int i = 1; i < N; i++)
-    {
-        cout << i << ": " << S[i] << " " << i-2 << ": " << S[i-2] << endl;
-        if (S[i] == S[i-1] || S[i] == S[i-2])
-        {
-            S[i] = '-';
-            ans++;
-        }
+string b(int n){
+    string s;
+    while(n){
+        if(n%2)s.push_back('1');
+        else s.push_back('0');
+        n /= 2;
     }
-    cout << ans << "\n";
+    reverse(s.begin(), s.end());
+    return s;
 }
 
 int main()
 {
-    ios_base::sync_with_stdio(0);
+#ifndef ONLINE_JUDGE
+    freopen("in", "r", stdin);
+    freopen("out", "w", stdout);
+#endif // ONLINE_JUDGE
+    string s;
+    getline(cin, s);
+    int mx = 0;
+    vector<string> v;
+    for(auto e : s){
+        v.push_back(b((int)e));
+        mx = max(mx, (int)b((int)e).size());
+    }
+    cout << mx << endl;
+    for(int i=0;i<mx;i++){
+        for(int j=0;j<v.size();j++){
+            if(i < v[j].size()) cout << v[j][i];
+            else cout << " ";
+        }
+        cout << endl;
+    }
+    
 
-    int T; cin >> T;
-    for (int t = 0; t < T; t++)
-        gogo();
 }

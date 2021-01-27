@@ -7,19 +7,19 @@ using namespace std;
 using namespace __gnu_pbds;
 using namespace __gnu_cxx;
  
-#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
- 
 typedef long long ll;
 typedef vector<int> vi;
 typedef vector<ll> vll;
 typedef pair<ll, ll> pll;
 typedef vector<pll> vpll;
+
+#define ordered_set tree<ll, null_type, greater<ll>, rb_tree_tag, tree_order_statistics_node_update>
  
 #define all(x) (x).begin(), (x).end()
 #define MOD 1000000007
 #define MOD9 998244353
 #define PI acos(-1)
-#define MAXN 200005
+#define MAXN 500005
 #define INF 100000000000000000
 #define nl '\n'
 #define MAX(x) *max_element(all(x))
@@ -63,34 +63,66 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 
-vt<vt<ll>> adj(MXS);
+ll bigmod ( ll a, ll p, ll m )
+{
+    ll res = 1;
+    ll x = a;
+    while (p)
+    {
+        if (p & 1) //p is odd
+        {
+            res = (res * x) % m;
+        }
+        x = (x * x) % m;
+        p = p >> 1;
+    }
+    return res;
+}
+vt<ll> fact(2005, 1), inv(2005, 1);
+
+ll mod_mul(ll a, ll b){
+    return ((a % MOD) * (b % MOD)) % MOD;
+}
 
 
 void solve(){
-    ll n, m, x, y, i, j, k, b, q;
+    ll i, j, n, m, k, x;
     cin >> n;
-    vt<ll> v(n);
-    for(i=0;i<n;i++){
-        cin >> v[i];
-    }
-    ll sum = 0;
-    map<ll, ll> mp;
-    for(i=0;i<n;i++){
-        for(j=0;j<n;j++){
-            for(k=0;k<n;k++){
-                cout << v[i] << " " << v[j] << " " << v[k] << " -> ";
-                ll val = (v[i] & v[j]) * (v[j] | v[k]);
-                mp[val]++;
-                cout << val << endl;
-                sum += (v[i] & v[j]) * (v[j] | v[k]);
+    vt<string> v(n), t(n);
+
+    for(i=0;i<n;i++) cin >> v[i];
+    for(i=0;i<n;i++) cin >> t[i];
+    
+    for(j=0;j<n;j++){
+        if(v[0][j] != t[0][j]){
+            for(i=0;i<n;i++){
+                if(v[i][j] == '0') v[i][j] = '1'; 
+                else v[i][j] = '0';
             }
         }
-    }    
-
-    for(auto ele : mp){
-        cout << ele.ff << " - " << ele.ss << endl;
     }
-    cout << sum << endl;
+
+    for(i=1;i<n;i++){
+        for(j=0;j<n;j++){
+            if(v[i][j] != t[i][j]){
+                for(k=0;k<n;k++) {
+                    if(v[i][k] == '0') v[i][k] = '1';
+                    else v[i][k] = '0';
+                }
+                break;
+            }
+        }
+    }
+
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            if(v[i][j] != t[i][j]){
+                cout << "NO" << endl;
+                return;
+            }
+        }
+    }
+    cout << "YES" << endl;
 }
 
 
@@ -101,6 +133,10 @@ int main()
     freopen("in", "r", stdin);
     freopen("out", "w", stdout);
 #endif // ONLINE_JUDGE
+
+    for(ll i=1;i<2005;i++) fact[i] = (fact[i-1] * i) % MOD;
+    for(ll i=1;i<2005;i++) inv[i] = (inv[i-1] * bigmod(i, MOD-2, MOD)) % MOD;
+
     ll tt = 1;
     cin >> tt;
     while (tt--)

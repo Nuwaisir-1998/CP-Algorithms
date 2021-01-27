@@ -525,38 +525,39 @@ struct Int {
   ######################################################################
 */
 
-
-bool f(Int a){
-    if(a <= 0){
-        cout << "Not a power of 2\n";
-        return false;
-    }else {
-        while (a > 0) {
-            if (a == 1) {
-                cout << "It’s a power of 2\n";
-                return true;
-            }
-            if (a % 2) {
-                cout << "Not a power of 2\n";
-                return false;
-            }
-            a = a / 2;
-        }
+Int power_(Int a, Int b){
+    Int i, m = 1;
+    for(i=0;i<b;i++){
+        m = m * a;
     }
+    return m;
+}
+
+
+bool f(){
+    int n;
+    Int a;
+    cin >> a >> n;
+    Int m = a;
+    n--;
+    while(n--){
+        m = power_(m,a);
+    }
+    cout << m << endl;
 }
 
 int main(){
 
     ios_base :: sync_with_stdio(false); //cin.tie(nullptr); cout.tie(nullptr);
     Int a, b;
-    int t;
-    cin >> t;
+    int t = 1;
+    // cin >> t;
     b = 1;
     vector<Int> v;
     while(t--) {
         //cout << b << ": ";
-        cin >> b;
-        f(b);
+        // cin >> b;
+        f();
     }
 
     return 0;

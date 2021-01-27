@@ -102,9 +102,7 @@ int main()
     
     for(ll i=1;i<200005;i++) fact[i] = (fact[i-1] * i) % MOD;
     for(ll i=1;i<200005;i++) inv[i] = (inv[i-1] * bigmod(i, MOD-2, MOD)) % MOD;
-    // for(ll i=0;i<10;i++){
-    //     cout << fact[i] << " " << inv[i] << endl;
-    // }
+    
     ll tt = 1;
     cin >> tt;
     while (tt--)

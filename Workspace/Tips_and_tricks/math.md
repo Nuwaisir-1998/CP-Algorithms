@@ -1,4 +1,4 @@
-1.
+# 1.
 GCD(a, b) = GCD(a, |b - a|)
 GCD(a, b, c) = GCD(GCD(a, b), c) = GCD(a, GCD(b, c))
 It can be proven that,

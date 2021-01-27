@@ -1,6 +1,9 @@
-from googlesearch import search
+import sys
+import math
 
-query = "studytonight"
+# Auto-generated code below aims at helping you parse
+# the standard input according to the problem statement.
 
-for i in search(query, tld="co.in", num=10, stop=10, pause=2):
-    print(i)
+s = [*set(map(int,input().split()))]
+s.sort(key=lambda x:x if x%2 else 10**10-x)
+print(*s)

@@ -87,7 +87,7 @@ ll mod_mul(ll a, ll b){
 void solve(){
     ll n, m, i, j, k, b, q;
     cin >> n >> k;
-    cout << mod_mul(fact[n], inv[k] * inv[n - k] << endl;
+    cout << mod_mul(fact[n], inv[k] * inv[n - k]) << endl;
 
 }
 

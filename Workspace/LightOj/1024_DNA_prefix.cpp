@@ -59,51 +59,61 @@ struct custom_hash {
 unordered_map<ll, ll, custom_hash> safe_map;
 gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
-#define MXS 600005
+#define MXS 500005
 
 /********************************************************************/
 
-void solve(){
-    ll n, m, i, j, k;
-    cin >> n >> m;
-    vt<vt<ll>> adj(n+1);
-    vt<vt<ll>> cost(n+1,vt<ll>(n+1));
-    vt<set<char>> vst(n+1); 
-    vt<set<char>> vst_ber(n+1); 
-    for(i=0;i<n;i++){
-        string s;
-        for(j=0;j<n;j++){
-            if(i != j){
-                cost[i][j] = s[j];
-                adj[i].push_back(j);
-                vst[j].insert(s[j]);
-                vst[i].insert(s[j]);
-            }
-        }
-    }
-
-    for(i=0;i<n;i++){
-        for(j=0;j<n;j++){
-            if(i != j){
-                if(cost[i][j] == cost[j][i]){
-                    cout << "YES" << endl;
-                    ll par = 0;
-                    while(m--){
-                        if(par % 2){
-                            cout << i+1 << " ";
-                        }else cout << j + 1 << " ";
-                        par++;
-                    }
-                    return;
-                }
-            }
-        }
-    }
-    vt<vt<ll>> vis(n+1, vt<ll> (n+1, 0));
-    
-
-
+ll lcp(string s1, string s2){
+    ll i = 0;
+    while(s1[i] and s2[i] and s1[i] == s2[i]) i++;
+    return i;
 }
+
+void solve(ll cs){
+    ll i, j, n, m, k, x;
+    cin >> n;
+    vt<string> v(n);
+    vt<ll> lcps(n-1);
+    ll mx_len = 0;
+    for(i=0;i<n;i++){
+        char str[100];
+        cin >> v[i];
+        mx_len = max((ll)v[i].size(), mx_len);
+    }
+    sort(all(v));
+    ll lcps_len = n - 1;
+    vt<ll> last_occurs(60, -1);
+    vt<ll> mx_last_occurs(60, -1);
+    vt<ll> effect(60, -1);
+    vt<ll> mx_effect(60, -1);
+    for(i=0;i<lcps_len;i++){
+        lcps[i] = lcp(v[i], v[i+1]);
+    }
+
+    ll ans = mx_len;
+    for(i=0;i<n-1;i++){
+        last_occurs[lcps[i]] = i;
+        mx_last_occurs[lcps[i]] = i;
+        for(j=1;j<=50;j++){
+            mx_last_occurs[j] = max(mx_last_occurs[j-1], last_occurs[j]);
+        }
+
+        // calculate effective range for each value from 1...50
+        for(j=1;j<=50;j++){
+            if(last_occurs[j] == -1) continue;
+            if(mx_last_occurs[j-1] > last_occurs[j]) effect[j] = -1;
+            else effect[j] = mx_last_occurs[j-1] + 1;
+        }
+        for(j=1;j<=50;j++){
+            if(effect[j] != -1){
+                ans = max(ans, j * (i - effect[j] + 2));
+            }
+        }
+    }
+
+    cout << "Case " << cs << ": " << ans << endl;
+}
+
 
 int main()
 {
@@ -115,7 +125,8 @@ int main()
 
     ll tt = 1;
     cin >> tt;
+    ll cs = 1;
     while (tt--)
-        solve();
+        solve(cs++);
     return 0;
 }

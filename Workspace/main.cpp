@@ -65,43 +65,12 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 void solve(){
     ll n, m, i, j, k;
-    cin >> n >> m;
-    vt<vt<ll>> adj(n+1);
-    vt<vt<ll>> cost(n+1,vt<ll>(n+1));
-    vt<set<char>> vst(n+1); 
-    vt<set<char>> vst_ber(n+1); 
+    cin >> n;
+    vt<ll> v(n);
     for(i=0;i<n;i++){
-        string s;
-        for(j=0;j<n;j++){
-            if(i != j){
-                cost[i][j] = s[j];
-                adj[i].push_back(j);
-                vst[j].insert(s[j]);
-                vst[i].insert(s[j]);
-            }
-        }
+        cin >> v[i];
     }
-
-    for(i=0;i<n;i++){
-        for(j=0;j<n;j++){
-            if(i != j){
-                if(cost[i][j] == cost[j][i]){
-                    cout << "YES" << endl;
-                    ll par = 0;
-                    while(m--){
-                        if(par % 2){
-                            cout << i+1 << " ";
-                        }else cout << j + 1 << " ";
-                        par++;
-                    }
-                    return;
-                }
-            }
-        }
-    }
-    vt<vt<ll>> vis(n+1, vt<ll> (n+1, 0));
-    
-
+    printv(v);
 
 }
 
@@ -109,8 +78,8 @@ int main()
 {
     ios::sync_with_stdio(false);
 #ifndef ONLINE_JUDGE
-    freopen("in", "r", stdin);
-    freopen("out", "w", stdout);
+    freopen("./in", "r", stdin);
+    freopen("./out", "w", stdout);
 #endif // ONLINE_JUDGE
 
     ll tt = 1;

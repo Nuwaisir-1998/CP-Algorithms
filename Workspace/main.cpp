@@ -63,15 +63,35 @@ gp_hash_table<ll, ll, custom_hash> safe_hash_table;
 
 /********************************************************************/
 
-void solve(){
-    ll n, m, i, j, k;
-    cin >> n;
-    vt<ll> v(n);
-    for(i=0;i<n;i++){
-        cin >> v[i];
+ll log_(ll b, ll x){
+    ll cnt = 0;
+    while(x){
+        x /= b;
+        cnt++;
     }
-    printv(v);
+    return cnt;
+}
 
+void solve(){
+    ll n, m, q, i, a, b, j, k;
+    cin >> a >> b;
+    ll ans = 0;
+    ll sq = sqrt(a);
+    for(i=1;i<=sq + 1;i++){
+        ll right = min(b, a - 1), left = i + 1, mid;
+        ll val = 0;
+        while(left <= right){
+            mid = (left + right) / 2;
+            if(i * mid + i <= a){
+                left = mid + 1;
+                val = mid;
+            }else{
+                right = mid - 1;
+            }
+        }
+        ans += max(0LL, val - (i + 1) + 1);
+    }
+    cout << ans << endl;
 }
 
 int main()

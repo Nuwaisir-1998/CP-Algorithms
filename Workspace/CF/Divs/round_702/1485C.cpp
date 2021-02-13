@@ -41,8 +41,13 @@ void dbg(T x) {cerr << "x is " << x << '\n';}
 /********************************************************************/
 
 void solve(){
-    ll n, m, i, j, k;
-    
+    ll n, m, i, j, a, b, k;
+    cin >> a >> b;
+    ll ans = 0;
+    for(i=1;i*i<a;i++){
+        ans += max(0LL, min(b, (a - i) / i) - i);
+    }
+    cout << ans << endl;
 }
 
 int main()

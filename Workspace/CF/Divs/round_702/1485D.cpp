@@ -42,7 +42,27 @@ void dbg(T x) {cerr << "x is " << x << '\n';}
 
 void solve(){
     ll n, m, i, j, k;
-    
+    cin >> n >> m;
+    vt<vt<ll>> v(n, vt<ll>(m));
+    for(ll i=0;i<n;i++){
+        for(ll j=0;j<m;j++){
+            cin >> v[i][j];
+        }
+    }
+    for(ll i=0;i<n;i++){
+        for(ll j=0;j<m;j++){
+            if((i + j) % 2 == 0){
+                cout << 720720 << " ";
+            }else{
+                ll mul = 1;
+                k = 4;
+                while(k--) mul *= v[i][j];
+                if(v[i][j] == 16) mul = 16;
+                cout << 720720 + mul << " ";
+            }
+        }
+        cout << endl;
+    }  
 }
 
 int main()
@@ -54,7 +74,7 @@ int main()
 #endif // ONLINE_JUDGE
 
     ll tt = 1;
-    cin >> tt;
+    // cin >> tt;
     while (tt--)
         solve();
     return 0;

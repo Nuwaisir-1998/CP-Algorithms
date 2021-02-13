@@ -40,11 +40,37 @@ void dbg(T x) {cerr << "x is " << x << '\n';}
 
 /********************************************************************/
 
+
 void solve(){
-    ll n, m, i, j, k;
+    ll n, m, q, i, j, k;
+    cin >> n >> q >> k;
+    vt<ll> v(n), opts(n), cum(n);
+    for(i=0;i<n;i++){
+        cin >> v[i];
+    }
+    for(i=0;i<n;i++){
+        if(i > 0 and i < n-1) opts[i] = v[i+1] - v[i-1] - 2;
+    }
+    opts[0] = v[0] - 2;
+    opts[n-1] = k - v[n-1] - 1;
+    cum[0] = opts[0];
+    for(i=1;i<n;i++){
+        cum[i] = cum[i-1] + opts[i];
+    }
+    // printv(opts);
+    while(q--){
+        ll l, r;
+        cin >> l >> r;
+        l--, r--;
+        if(l == r){
+            cout << k - 1 << endl;
+            continue;
+        }
+        cout << max(0LL, cum[r-1] - cum[l]) + v[l+1] - 2 + k - v[r-1] - 1 << endl;
+    }
+    
     
 }
-
 int main()
 {
     ios::sync_with_stdio(false);
@@ -54,7 +80,7 @@ int main()
 #endif // ONLINE_JUDGE
 
     ll tt = 1;
-    cin >> tt;
+    // cin >> tt;
     while (tt--)
         solve();
     return 0;

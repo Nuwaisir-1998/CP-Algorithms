@@ -1,0 +1,12 @@
+1. When I find an idea, and after some time find out that this idea
+doesn't work for some cases, maybe I don't think much about why this
+idea fails. That's a big problem.
+
+2. For this (https://codeforces.com/contest/1486/problem/D) problem,
+when I was traversing the array in the check function, I totally forgot
+to check the prefix of the array when I was searching for a subarray
+having positive sum. So, always remember to check whether you are checking
+the prefix or suffix as well (Corner cases ?). Found the bug by doing stress
+test over the author's solution :(
+
+

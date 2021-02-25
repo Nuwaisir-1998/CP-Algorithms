@@ -7,3 +7,7 @@ So, if we update all the elements of this array by x, the GCD of the array can b
 (Precalculate the gcd of the differences and then just replace a(1) with a(1) + x for each query)
 Problem : https://codeforces.com/contest/1459/problem/C
 
+# 2.
+Maybe you need to use MOD in possibly every mathematical operation when you need an answer modulo MOD.
+Example: https://codeforces.com/gym/101192/problem/H
+

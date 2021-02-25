@@ -40,9 +40,38 @@ void dbg(T x) {cerr << "x is " << x << '\n';}
 
 /********************************************************************/
 
+ll count_odd_ones(ll x){
+    return x / 2 + (__builtin_popcountll(x) % 2 == 0 and x % 2) + (__builtin_popcountll(x) % 2);
+}
+
+ll mod_mul(ll x, ll y, ll m){
+    return ((x % m) * (y % m)) % m;
+}
+
 void solve(){
     ll n, m, i, j, k;
-    
+    cin >> n;
+    vt<ll> odds(n), evens(n), cum_odds(n), cum_evens(n);
+    for(ll i=0; i<n; i++){
+        ll l, r;
+        cin >> l >> r;
+        odds[i] = (count_odd_ones(r) - count_odd_ones(l-1)) % MOD;
+        evens[i] = (r - l + 1 - odds[i] + MOD) % MOD;
+        if(i > 0) {
+            cum_odds[i] = (cum_odds[i - 1] + odds[i]) % MOD;
+            cum_evens[i] = (cum_evens[i - 1] + evens[i]) % MOD;
+        }else {
+            cum_odds[i] = odds[i];
+            cum_evens[i] = evens[i];
+        }
+    }
+    ll ans = 0;
+
+    for(i=0;i<n-1;i++){
+        ans = (ans + mod_mul(odds[i], cum_evens[n-1] - cum_evens[i] + MOD, MOD)) % MOD; 
+        ans = (ans + mod_mul(evens[i], cum_odds[n-1] - cum_odds[i] + MOD, MOD)) % MOD;
+    }
+    cout << ans << endl;
 }
 
 int main()
@@ -54,7 +83,7 @@ int main()
 #endif // ONLINE_JUDGE
 
     ll tt = 1;
-    cin >> tt;
+    // cin >> tt;
     while (tt--)
         solve();
     return 0;

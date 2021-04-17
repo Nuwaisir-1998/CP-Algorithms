@@ -40,7 +40,7 @@ void dbg(T x) {cerr << "x is " << x << '\n';}
 
 /********************************************************************/
 
-void solve(){
+void solve(ll cs){
     ll n, m, i, j, k;
     
 }
@@ -53,9 +53,9 @@ int main()
     freopen("./out", "w", stdout);
 #endif // ONLINE_JUDGE
 
-    ll tt = 1;
+    ll tt = 1, cs = 1;
     cin >> tt;
     while (tt--)
-        solve();
+        solve(cs++);
     return 0;
 }

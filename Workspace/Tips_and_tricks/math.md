@@ -11,3 +11,6 @@ Problem : https://codeforces.com/contest/1459/problem/C
 Maybe you need to use MOD in possibly every mathematical operation when you need an answer modulo MOD.
 Example: https://codeforces.com/gym/101192/problem/H
 
+# 3.
+nth Catalan number: 1/(n+1) * (2n) C n
+

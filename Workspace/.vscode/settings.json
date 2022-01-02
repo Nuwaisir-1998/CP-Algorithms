@@ -8,6 +8,7 @@
         "string": "cpp",
         "vector": "cpp",
         "list": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "cstdlib": "cpp"
     }
 }

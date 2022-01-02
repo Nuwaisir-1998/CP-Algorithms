@@ -43,104 +43,45 @@ void dbg(T x) {cerr << "x is " << x << '\n';}
 
 /********************************************************************/
 
+
 void solve(ll cs){
-    ll n, m, i, j, c, k, l, q, r, p;
+    ll n, m, i, j, k;
     cin >> n;
-    string s1, s2, s3;
-    cin >> s1;
-    cin >> s2;
-    cin >> s3;
-
-    string ans;
-
-    vt<bool> mark1(2*n, 0);
-    vt<bool> mark2(2*n, 0);
-    vt<bool> mark3(2*n, 0);
-
-    for(i=0;i<2*n;i++){
-        if(s1[i] == s2[i]) {
-            ans.push_back(s1[i]);
-            mark1[i] = true;
-            mark2[i] = true;
+    vt<ll> v(n);
+    for(i=0;i<n;i++){
+        cin >> v[i];
+    }
+    if(n == 1){
+        cout << 0 << endl;
+        return;
+    }
+    ll mn = INF;
+    for(ll dif=1;dif<=n-1;dif++){
+        vt<ll> bebodhan;
+        for(j=0;j + dif < n;j++){
+            bebodhan.push_back(v[j + dif] - v[j]);
         }
-        else if(s1[i] == s3[i]) {
-            ans.push_back(s1[i]);
-            mark1[i] = true;
-            mark3[i] = true;
+        m = bebodhan.size();
+        vt<bool> mark(m, false);
+        k = 0;
+        ll mx = 0;
+        for(j=0;j<m;j++){
+            ll cnt = 0;
+            k = j;
+            if(mark[j]) continue;
+            while(k < m and bebodhan[k] == bebodhan[j]){
+                mark[k] = true;
+                k += dif;
+                cnt++;
+            }
+            mx = max(mx, cnt);
         }
-        else if(s2[i] == s3[i]) {
-            ans.push_back(s2[i]);
-            mark3[i] = true;
-            mark2[i] = true;
-        }
+        // cout << dif << " " << mx << endl;
+        // printv(bebodhan);
+        mn = min(mn, n - mx - 1);
     }
 
-    ll baki1 = 0, baki2 = 0, baki3 = 0;
-
-    for(i=0;i<2*n;i++){
-        if(!mark1[i]) baki1++;
-        if(!mark2[i]) baki2++;
-        if(!mark3[i]) baki3++;
-    }
-    mark1.push_back(1);
-    mark3.push_back(1);
-    mark2.push_back(1);
-    string fin;
-    ll idx = 0;
-    // cout << baki1 << " "<< baki2 << " " << baki3 << endl;
-    // printv(mark2);
-    ll sz = 2 * n;
-    if(baki1 <= n and baki1 != 0){
-        // cout << "one" << endl;
-        string str;
-        for(i=0;i<2*n;i++){
-            cout << ans[i];
-            if(mark1[i] == false){
-                str += s1[i];
-            }
-            if(mark1[i] == false and mark1[i+1] == true){
-                sz += str.size();
-                cout << str;
-                str = "";
-            }
-        }
-    }else if(baki2 <= n and baki2 != 0){
-        // cout << "two" << endl;
-        string str;
-        for(i=0;i<2*n;i++){
-            cout << ans[i];
-            if(mark2[i] == false){
-                str += s2[i];
-            }
-            if(mark2[i] == false and mark2[i+1] == true){
-                sz += str.size();
-                cout << str;
-                str = "";
-            }
-        }
-    }else if(baki3 <= n and baki3 != 0){
-        // cout << "three" << endl;
-        string str;
-        for(i=0;i<2*n;i++){
-            cout << ans[i];
-            if(mark3[i] == false){
-                str += s3[i];
-            }
-            if(mark3[i] == false and mark3[i+1] == true){
-                sz += str.size();
-                cout << str;
-                str = "";
-            }
-        }
-    }
-    while(sz < 3*n) {
-        cout << 0;
-        sz++;
-    }
-    cout << endl;
-
-
-
+    cout << mn << endl;
 }
 
 int main()
@@ -148,7 +89,7 @@ int main()
     ios::sync_with_stdio(false);
 #ifndef ONLINE_JUDGE
     freopen("./in", "r", stdin);
-    freopen("./out", "w", stdout);
+    // freopen("./out", "w", stdout);
 #endif // ONLINE_JUDGE
 
     ll tt = 1, cs = 1;

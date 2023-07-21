@@ -454,7 +454,7 @@ struct Int {
     //Added part.
 
     friend Int max(const Int &a,const Int &b){
-        if(a<b){
+        if(a>b){
             return a;
         }
         return b;
